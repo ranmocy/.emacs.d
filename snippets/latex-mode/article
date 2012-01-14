@@ -1,0 +1,10 @@
+#contributor : Ranmocy <Ranmocy@gmail.com>
+#name : \documentclass{article} ... \end{environment}
+# --
+\documentclass{${1:article}}
+\usepackage{formalfontsets}
+\usepackage{signsets}
+
+\begin{document}
+$0
+\end{document}
