@@ -1,4 +1,6 @@
 ;;==============================Hooks==============================
+(add-to-list 'auto-mode-alist '("\.zsh$" . shell-script-mode))
+
 (defun ruby-mode-hook ()
   (autoload 'ruby-mode "ruby-mode" nil t)
   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
@@ -42,4 +44,8 @@
   (autoload 'sass-mode "sass-mode" nil t)
   (add-to-list 'auto-mode-alist '("\.sass$" . feature-mode)))
 
-(add-to-list 'auto-mode-alist '("\.zsh$" . shell-script-mode))
+(defun markdown-mode-hook ()
+  (autoload 'markdown-mode "markdown-mode.el"
+    "Major mode for editing Markdown files" t)
+  (add-to-list 'auto-mode-alist '("\\.markdown" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.text" . markdown-mode)))

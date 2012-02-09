@@ -62,6 +62,17 @@ of `ruby-program-name').  Runs the hooks `inferior-ruby-mode-hook'
 
 ;;;***
 
+;;;### (autoloads (markdown-mode) "markdown-mode/markdown-mode" "markdown-mode/markdown-mode.el"
+;;;;;;  (20275 39543))
+;;; Generated autoloads from markdown-mode/markdown-mode.el
+
+(autoload 'markdown-mode "markdown-mode/markdown-mode" "\
+Major mode for editing Markdown files.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (ruby-compilation-this-buffer ruby-compilation-cap
 ;;;;;;  ruby-compilation-rake ruby-compilation-run pcomplete/cap
 ;;;;;;  pcomplete/rake) "ruby-compilation/ruby-compilation" "ruby-compilation/ruby-compilation.el"
@@ -195,7 +206,7 @@ Start twittering-mode.
 ;;;;;;  "rhtml/rhtml-ruby-hook.el" "rhtml/rhtml-sgml-hacks.el" "ruby-compilation/ruby-compilation-autoloads.el"
 ;;;;;;  "ruby-compilation/ruby-compilation-pkg.el" "ruby-mode/ruby-mode-autoloads.el"
 ;;;;;;  "ruby-mode/ruby-mode-pkg.el" "twittering-mode/test.el" "yaml-mode/yaml-mode.el")
-;;;;;;  (20224 31934 830096))
+;;;;;;  (20275 39544 465628))
 
 ;;;***
 

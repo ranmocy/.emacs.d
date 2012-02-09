@@ -55,11 +55,11 @@
                :after (lambda () (feature-mode-hook)))
         (:name sass-mode
                :type elpa
-	       :load "sass-mode.el"
+               :load "sass-mode.el"
                :after (lambda () (sass-mode-hook)))
+        (:name markdown-mode
+               :load "markdown-mode.el"
+               :after (lambda () (markdown-mode-hook)))
         ))
 
 (el-get 'sync)
-
-
-

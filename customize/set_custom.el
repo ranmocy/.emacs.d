@@ -32,11 +32,11 @@
 
 ;;-----Apple-keyboard-remap-----
 (when (current-os-p 'macos)
-  ;;  (setq mac-command-modifier 'super)
+  (setq mac-command-modifier 'super)
   (setq mac-option-modifier 'meta)
   (setq mac-control-modifier 'control)
-  (setq mac-function-modifier 'super)
+  ;;(setq mac-function-modifier 'super)
+  (setq mac-right-option-modifier nil)
 
-  ;;  (setq mac-right-option-modifier 'super)
   (setq mac-allow-anti-aliasing t)
   )

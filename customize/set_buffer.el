@@ -15,8 +15,15 @@
 (tabbar-mode t)
 (global-set-key (kbd "s-[") 'tabbar-backward-tab)
 (global-set-key (kbd "s-]") 'tabbar-forward-tab)
+(global-set-key (kbd "s-{") 'tabbar-backward-group)
+(global-set-key (kbd "s-}") 'tabbar-forward-group)
 (setq tabbar-help-on-tab-function nil)	; don't show the anoying help info when cursor over tab
 (pop load-path)
 
 (global-set-key [C-tab] 'other-window)
-(global-set-key [f12] 'kill-this-buffer)
+(global-set-key [C-escape] 'kill-this-buffer)
+
+(when (current-os-p `macos)
+      (global-set-key (kbd "s-w") 'kill-this-buffer)
+      (global-set-key (kbd "s-b") `ibuffer)
+      )
