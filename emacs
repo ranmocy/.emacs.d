@@ -35,7 +35,7 @@
 (load "set_bookmark.el")
 (load "set_todo.el")
 
-(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t) 
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on t)
+;; (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t) 
+;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on t)
 
 (server-start)
