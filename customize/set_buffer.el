@@ -10,7 +10,7 @@
 (setq history-delete-duplicates t)      ;删除minibuffer的重复历史
 (setq uniquify-buffer-name-style 'forward) ;; 当有两个文件名相同的缓冲时，使用前缀的目录名做 buffer 名字，不用原来的 foobar<?> 形式。
 
-(push "~/.emacs.d/tabbar" load-path)
+(push "~/.emacs.d/plugins/tabbar" load-path)
 (require 'tabbar)
 (tabbar-mode t)
 (global-set-key (kbd "s-[") 'tabbar-backward-tab)

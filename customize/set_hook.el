@@ -1,6 +1,11 @@
 ;;==============================Hooks==============================
 (add-to-list 'auto-mode-alist '("\.zsh$" . shell-script-mode))
 
+(defun yasnippet-hook ()
+  (add-to-list 'load-path "~/.emacs.d/yasnippet")
+  (require 'yasnippet)
+  (yas/global-mode 1))
+
 (defun ruby-mode-hook ()
   (autoload 'ruby-mode "ruby-mode" nil t)
   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
@@ -10,13 +15,14 @@
   (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
-  (add-hook 'ruby-mode-hook '(lambda ()
-                               (setq ruby-deep-arglist t)
-                               (setq ruby-deep-indent-paren nil)
-                               (setq c-tab-always-indent nil)
-                               (setq ruby-insert-encoding-magic-comment nil) ;; remove the magic encoding header
-                               (require 'inf-ruby)
-                               (require 'ruby-compilation))))
+  (add-hook 'ruby-mode-hook
+            '(lambda ()
+               (setq ruby-deep-arglist t)
+               (setq ruby-deep-indent-paren nil)
+               (setq c-tab-always-indent nil)
+               (setq ruby-insert-encoding-magic-comment nil) ;; remove the magic encoding header
+               (require 'inf-ruby)
+               (require 'ruby-compilation))))
 
 (defun rhtml-mode-hook ()
   (autoload 'rhtml-mode "rhtml-mode" nil t)
