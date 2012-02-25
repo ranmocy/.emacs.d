@@ -1,9 +1,13 @@
 ;;==============================Hooks==============================
-(add-to-list 'auto-mode-alist '("\.zsh$" . shell-script-mode))
+(add-to-list 'auto-mode-alist '(".zshrc$" . shell-script-mode))
 
 (defun yasnippet-hook ()
-  (add-to-list 'load-path "~/.emacs.d/yasnippet")
-  (require 'yasnippet)
+  (autoload 'yas/global-mode "yasnippet" nil t)
+  (yas/initialize)
+  (global-set-key [backtab] `yas/expand)
+  ;; (setq yas/snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/el-get/yasnippet/extras/imported"))
+  ;; (setq yas/root-directory "~/.emacs.d/snippets")
+  ;; (yas/load-directory yas/root-directory)
   (yas/global-mode 1))
 
 (defun ruby-mode-hook ()
@@ -20,16 +24,16 @@
                (setq ruby-deep-arglist t)
                (setq ruby-deep-indent-paren nil)
                (setq c-tab-always-indent nil)
-               (setq ruby-insert-encoding-magic-comment nil) ;; remove the magic encoding header
+               ;;(setq ruby-insert-encoding-magic-comment nil)
+               ;;(remove-hook 'before-save-hook 'ruby-mode-set-encoding)
+               ;;(defun ruby-mode-set-encoding () ())
                (require 'inf-ruby)
                (require 'ruby-compilation))))
 
 (defun rhtml-mode-hook ()
   (autoload 'rhtml-mode "rhtml-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
-  (add-to-list 'auto-mode-alist '("\\.rjs\\'" . rhtml-mode))
-  (add-hook 'rhtml-mode '(lambda ()
-                           (define-key rhtml-mode-map (kbd "M-s") 'save-buffer))))
+  (add-to-list 'auto-mode-alist '("\\.rjs\\'" . rhtml-mode)))
 
 (defun yaml-mode-hook ()
   (autoload 'yaml-mode "yaml-mode" nil t)
@@ -48,7 +52,8 @@
 
 (defun sass-mode-hook ()
   (autoload 'sass-mode "sass-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\.sass$" . feature-mode)))
+  (add-to-list 'auto-mode-alist '("\.scss$" . sass-mode))
+  (add-to-list 'auto-mode-alist '("\.sass$" . sass-mode)))
 
 (defun markdown-mode-hook ()
   (autoload 'markdown-mode "markdown-mode.el"

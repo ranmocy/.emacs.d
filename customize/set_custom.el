@@ -1,18 +1,34 @@
-;;----------个人信息----------
-(setq user-full-name "Ranmocy Sheng")
-(setq user-mail-address "Ranmocy@gmail.com")
+;;----------Macros&Functions----------
+(defun current-os-p (os)
+  "Judge whether current operating system equal to 'os."
+  (equal current-os os)
+  )
+(defun current-env-p (env)
+  "Judge wheter current enviroment equal to 'env."
+  (equal current-env env)
+  )
+(defun time-interval (from-time to-time)
+  (message "Emacs loaded in %fs"
+           (* 0.000001 (apply #'-
+                              (mapcar (lambda (time)
+                                        (+ (* 1000000 (+ (* 65536 (first time)) (second time))) (third time)))
+                                      (list to-time from-time)))))
+  )
+(defun emacs-load-part-time ()
+  (time-interval *last-record* (current-time))
+  (setq *last-record-load-time* (current-time)))
+(defun byte-recompile-home ()
+  (interactive)
+  (byte-recompile-file "~/.emacs.d/init.el")
+  (byte-recompile-directory "~/.emacs.d/customize/"))
 
-;;----------备份文件----------
-(setq make-backup-files nil)
-(setq auto-save-default nil)
-;; (setq version-control t);;启用版本控制，即可以备份多次
-;; (setq kept-old-versions 2);;备份最原始的版本两次，及第一次编辑前的文档，和第二次编辑前的文档
-;; (setq kept-new-versions 2);;备份最新的版本1次，理解同上
-;; (setq delete-old-versions t);;删掉不属于以上3中版本的版本
-;; (setq backup-directory-alist '(("." . "~/.emacs.d/backups")));;设置备份文件的路径
-;; (setq backup-by-copying t);;备份设置方法，直接拷贝
+;;----------Personal----------
+(setq
+ user-full-name "Ranmocy Sheng"
+ user-mail-address "Ranmocy@gmail.com"
+ )
 
-;;----------快捷启动----------
+;;----------Shortcut----------
 (define-prefix-command 'run-map)
 (global-set-key (kbd "C-`") 'run-map)
 (define-key 'run-map (kbd "d") 'dired)
@@ -21,8 +37,9 @@
 (define-key 'run-map (kbd "c") 'calendar)
 (define-key 'run-map (kbd "r") 'remember)
 
-;;----------一般设置----------
+;;----------General----------
 (fset 'yes-or-no-p 'y-or-n-p)           ;以 y/n代表 yes/no
+(setq confirm-kill-emacs 'yes-or-no-p)  ;yes before kill emacs
 ;;(auto-compression-mode 1)               ;打开压缩文件时自动解压缩
 (ido-mode 't)                           ;匹配选择模式
 (setq ring-bell-function 'ignore)       ;关闭烦人的出错时的提示声
@@ -30,13 +47,17 @@
 (setq suggest-key-bindings 1)           ;当使用 M-x COMMAND 后，过 1 秒钟显示该 COMMAND 绑定的键
 (setq x-select-enable-clipboard t)      ;支持emacs和外部程序的粘贴
 
-;;-----Apple-keyboard-remap-----
+;;----------Apple-Keyboard-Remap----------
 (when (current-os-p 'macos)
   (setq mac-command-modifier 'super)
   (setq mac-option-modifier 'meta)
   (setq mac-control-modifier 'control)
-  ;;(setq mac-function-modifier 'super)
+  (setq mac-function-modifier 'super)
   (setq mac-right-option-modifier nil)
 
   (setq mac-allow-anti-aliasing t)
   )
+
+;;----------Enable-Functions----------
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)

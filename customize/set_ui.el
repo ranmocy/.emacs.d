@@ -17,40 +17,36 @@
   (setq x-stretch-cursor t)               ;光标在 TAB 字符上会显示为一个大方块
   )
 
+;;----------lambda----------
+(defun pretty-lambdas ()
+  "Display the word “lambda” by “λ”."
+  (font-lock-add-keywords
+   nil
+   `(("\(\\(\\<lambda\\>\\)"
+      (0
+       (progn
+         (compose-region (match-beginning 1) (match-end 1) "λ")
+         'font-lock-keyword-face))))))
+
+(add-hook 'emacs-lisp-mode-hook 'pretty-lambdas)
+;; (remove-hook 'emacs-lisp-mode-hook 'pretty-lambdas)
+(defalias 'λ 'lambda)
+(lambda ()) ;for test
+
 ;;----------初始画面------------
 (setq inhibit-startup-message t)        ;关闭起动时闪屏
 (setq initial-scratch-message nil)      ;禁止在草稿缓存里面显示处始化信息
 
 ;;----------颜色主题----------
-(if (current-env-p 'term)
-    (load-theme 'tango)
-  (load-theme 'tango-dark)
-;  (set-frame-font "DejaVu Sans Mono-16")
-  (set-frame-font "Inconsolata-18")
-  (when (current-os-p 'macos)
-    (global-set-key (kbd "s-\\") 'ns-toggle-fullscreen)
-    (ns-toggle-fullscreen)
-    )
-)
-
-;; (setq load-path (cons "~/.emacs.d/themes" load-path))
-;; (require 'color-theme)
-;; (require 'color-theme-darkmate)
-;; (color-theme-darkmate)
-;; (color-theme-initialize)
-;; (color-theme-gray30)
-;; (set-frame-font "YaHeiMono")
-;;(load-theme 'tango)
-;;
-;; (defun set-win-color-theme(frame)
-;;   (select-frame frame)  ;; must be current for local ctheme
-;;   (if (window-system frame)  ;; test winsystem
-;;       (load-theme 'tango-dark)
-;;     )
-;;   )
-;; (add-hook 'after-make-frame-functions 'set-win-color-theme)
-;; (set-win-color-theme (selected-frame))
-
+;; (if (current-env-p 'term)
+;;     (load-theme 'tango)
+;;   (load-theme 'tango-dark)
+;; ;  (set-frame-font "DejaVu Sans Mono-16")
+;;   (set-frame-font "Inconsolata-18")
+;;   (when (current-os-p 'macos)
+;;     (global-set-key (kbd "s-\\") 'ns-toggle-fullscreen)
+;;     (ns-toggle-fullscreen)
+;;     ))
 
 ;;----------状态栏----------
 (column-number-mode t)
