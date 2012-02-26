@@ -22,11 +22,12 @@
 (global-set-key (kbd "s-}") 'tabbar-forward-group)
 (setq tabbar-help-on-tab-function nil)
 
+;;----------kill-buffer----------
 (global-set-key [C-tab] 'other-window)
-(when (current-os-p `linux)
+(when (system-type-linux-p)
   (global-set-key [C-escape] 'kill-this-buffer)
   )
-(when (current-os-p `macos)
+(when (system-type-darwin-p)
   (global-set-key (kbd "s-o") `dired)
   (global-set-key (kbd "s-b") `ibuffer)
   (global-set-key (kbd "s-w") 'kill-this-buffer)

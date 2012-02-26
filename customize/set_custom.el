@@ -1,27 +1,3 @@
-;;----------Macros&Functions----------
-(defun current-os-p (os)
-  "Judge whether current operating system equal to 'os."
-  (equal current-os os)
-  )
-(defun current-env-p (env)
-  "Judge wheter current enviroment equal to 'env."
-  (equal current-env env)
-  )
-(defun time-interval (from-time to-time)
-  (message "Emacs loaded in %fs"
-           (* 0.000001 (apply #'-
-                              (mapcar (lambda (time)
-                                        (+ (* 1000000 (+ (* 65536 (first time)) (second time))) (third time)))
-                                      (list to-time from-time)))))
-  )
-(defun emacs-load-part-time ()
-  (time-interval *last-record* (current-time))
-  (setq *last-record-load-time* (current-time)))
-(defun byte-recompile-home ()
-  (interactive)
-  (byte-recompile-file "~/.emacs.d/init.el")
-  (byte-recompile-directory "~/.emacs.d/customize/"))
-
 ;;----------Personal----------
 (setq
  user-full-name "Ranmocy Sheng"
@@ -48,7 +24,7 @@
 (setq x-select-enable-clipboard t)      ;支持emacs和外部程序的粘贴
 
 ;;----------Apple-Keyboard-Remap----------
-(when (current-os-p 'macos)
+(when (system-type-darwin-p)
   (setq mac-command-modifier 'super)
   (setq mac-option-modifier 'meta)
   (setq mac-control-modifier 'control)

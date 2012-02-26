@@ -1,4 +1,4 @@
-;;==============================Languages==============================
+;;====================Languages====================
 (setq
  default-major-mode 'text-mode         ;设置默认地主模式为TEXT模式
  show-paren-style 'parentheses         ;括号匹配显示但不是烦人的跳到另一个括号。
@@ -16,13 +16,14 @@
 (setq font-lock-global-modes '(not shell-mode text-mode))
 (setq font-lock-verbose t)
 (setq font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
-;;----------ispell----------
-(if (current-os-p 'macos)
+
+;;--------------------ispell--------------------
+(if (system-type-darwin-p)
     (setq ispell-program-name "/usr/local/bin/aspell")
-  (if (current-os-p 'linux)
+  (if (system-type-linux-p)
       (setq ispell-program-name "/usr/bin/ispell")))
 
-;;----------hippie-expand----------
+;;--------------------hippie-expand--------------------
 (global-set-key [(meta ?/)] 'hippie-expand)
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev
@@ -37,7 +38,7 @@
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
 
-;;--------------------lisp------------------------------
+;;--------------------lisp--------------------
 (setq
  max-lisp-eval-depth 40000              ;lisp最大执行深度
  max-specpdl-size 10000                 ;最大容量
@@ -46,7 +47,6 @@
  )
 
 ;;--------------------rails-project--------------------
-;;----------slim----------
 (autoload 'slim-mode "slim-mode" nil t)
 
 ;; helper-function
