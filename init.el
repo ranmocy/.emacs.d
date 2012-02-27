@@ -7,7 +7,7 @@
 ;;----------custom-setting---------
 (load "~/.emacs.d/customize/set_functions")
 (load "~/.emacs.d/customize/set_environment")
-;;(load "~/.emacs.d/customize/set_custom")
+(load "~/.emacs.d/customize/set_custom")
 (load "~/.emacs.d/customize/set_editor")
 (load "~/.emacs.d/customize/set_buffer")
 (load "~/.emacs.d/customize/set_language")

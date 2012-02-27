@@ -10,8 +10,8 @@
 
 ;;----------Auto-Save----------
 (if (system-type-unix-like-p)
-    (setq autosave-dir (concat temporary-file-directory "emacs_autosaves"))
-  (setq autosave-dir (concat "/tmp/emacs_" (user-login-name) "/autosaves/"))
+    (setq autosave-dir (concat "/tmp/emacs_" (user-login-name) "/autosaves/"))
+  (setq autosave-dir (concat temporary-file-directory "emacs_autosaves"))
   )
 (make-directory autosave-dir t)
 (setq
@@ -23,8 +23,8 @@
 
 ;;----------Auto-Backup----------
 (if (system-type-unix-like-p)
-    (setq backup-dir (concat temporary-file-directory "emacs_backups"))
-  (setq backup-dir (concat "/tmp/emacs_" (user-login-name) "/backups/"))
+    (setq backup-dir (concat "/tmp/emacs_" (user-login-name) "/backups/"))
+  (setq backup-dir (concat temporary-file-directory "emacs_backups"))
   )
 (make-directory backup-dir t)
 (setq

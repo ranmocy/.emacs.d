@@ -13,21 +13,21 @@
         (:name yasnippet
                :type git
                :url "git://github.com/capitaomorte/yasnippet.git"
-               :after (yasnippet-hook))
+               :after (lambda () (yasnippet-hook)))
         (:name yasnippet-bundle
                :type elpa
                :load "yasnippet-bundle.el")
-        ;; (:name textmate
-        ;;        :type git
-        ;;        :url "git://github.com/defunkt/textmate.el"
-        ;;        :load "textmate.el")
+        (:name textmate
+               :type git
+               :url "git://github.com/defunkt/textmate.el"
+               :load "textmate.el")
 
         ;; Ruby
         (:name ruby-mode 
                :type git
                :url "git://github.com/david/ruby-mode.git"
                :load "ruby-mode.el"
-               :after (ruby-mode-hook))
+               :after (lambda () (ruby-mode-hook)))
         (:name inf-ruby
                :type elpa)
         (:name ruby-compilation 
@@ -36,8 +36,8 @@
                :type git
                :url "http://github.com/djwhitt/rvm.el.git"
                :load "rvm.el"
-               ;; :compile ("rvm.el")
-               :after (rvm-use-default))
+               :compile ("rvm.el")
+               :after (lambda () (rvm-use-default)))
         (:name ruby-electric
                :type git
                :url "git://github.com/qoobaa/ruby-electric.git"
@@ -47,32 +47,32 @@
         ;; File Modes
         (:name markdown-mode
                :load "markdown-mode.el"
-               :after (markdown-mode-hook))
+               :after (lambda () (markdown-mode-hook)))
         (:name rhtml
                :type git
                :url "https://github.com/crazycode/rhtml.git"
                :features rhtml-mode
-               :after (rhtml-mode-hook))
+               :after (lambda () (rhtml-mode-hook)))
         (:name css-mode 
                :type elpa 
-               :after (css-mode-hook))
+               :after (lambda () (css-mode-hook)))
         (:name yaml-mode 
                :type git
                :url "http://github.com/yoshiki/yaml-mode.git"
                :features yaml-mode
-               :after (yaml-mode-hook))
+               :after (lambda () (yaml-mode-hook)))
         (:name haml-mode
                :type elpa
                :load "haml-mode.el")
         (:name sass-mode
                :type elpa
                :load "sass-mode.el"
-               :after (sass-mode-hook))
+               :after (lambda () (sass-mode-hook)))
         (:name cucumber
                :type git
                :url "git://github.com/michaelklishin/cucumber.el.git"
                :load "feature-mode.el"
-               :after (feature-mode-hook))
+               :after (lambda () (feature-mode-hook)))
 
         ;; Rails
         (:name rinari

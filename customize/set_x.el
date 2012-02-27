@@ -5,10 +5,11 @@
     (load-theme 'tango-dark)
     ;;----------font-setting----------
     ;; (set-frame-font "DejaVu Sans Mono-16")
-    (set-frame-font "Inconsolata-18")
-    ;;文泉驿等宽微米黑-20 ;;文泉驿等宽正黑-16
-    ;;YaHeiMono-18 ;;YaHei Consolas Hybrid-16
-    ;;DejaVu Sans YuanTi Mono-16
+    ;; (set-frame-font "Inconsolata-18")
+    ;;文泉驿等宽正黑-16
+    ;;文泉驿等宽微米黑-20
+    ;;YaHeiMono-18
+    (set-frame-font "YaHei Consolas Hybrid-16")
 
     ;;----------fullscreen----------
     (when (system-type-linux-p)

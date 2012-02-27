@@ -14,7 +14,7 @@
  )
 
 ;;----------tabbar----------
-(load "~/.emacs.d/plugins/tabbar/tabbar.el")
+(load "~/.emacs.d/plugins/tabbar/tabbar")
 (tabbar-mode t)
 (global-set-key (kbd "s-[") 'tabbar-backward-tab)
 (global-set-key (kbd "s-]") 'tabbar-forward-tab)
