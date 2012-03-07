@@ -14,9 +14,9 @@
                :type git
                :url "git://github.com/capitaomorte/yasnippet.git"
                :after (lambda () (yasnippet-hook)))
-        (:name yasnippet-bundle
-               :type elpa
-               :load "yasnippet-bundle.el")
+        ;; (:name yasnippet-bundle
+        ;;        :type elpa
+        ;;        :load "yasnippet-bundle.el")
         (:name textmate
                :type git
                :url "git://github.com/defunkt/textmate.el"

@@ -1,14 +1,25 @@
 ;;========================================Environment========================================
-;;----------Encoding----------
+;;----------encoding----------
 (set-language-environment 'utf-8)
 (prefer-coding-system 'utf-8)
 (setq
  keyboard-coding-system 'utf-8
  coding-system-for-read 'utf-8
  coding-system-for-write 'utf-8
- )
+ file-name-coding-system 'utf-8
+ locale-coding-system 'utf-8
+)
 
-;;----------Auto-Save----------
+;;----------term----------
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+(setq shell-file-name "/bin/bash")
+(global-set-key (kbd "C-c t") '(lambda ()
+                                (interactive)
+                                (term shell-file-name)))
+
+;;----------auto-save----------
 (if (system-type-unix-like-p)
     (setq autosave-dir (concat "/tmp/emacs_" (user-login-name) "/autosaves/"))
   (setq autosave-dir (concat temporary-file-directory "emacs_autosaves"))
@@ -21,7 +32,7 @@
  auto-save-file-name-transforms `(("\\(?:[^/]*/\\)*\\(.*\\)" ,(concat autosave-dir "\\1") t))
  )
 
-;;----------Auto-Backup----------
+;;----------auto-backup----------
 (if (system-type-unix-like-p)
     (setq backup-dir (concat "/tmp/emacs_" (user-login-name) "/backups/"))
   (setq backup-dir (concat temporary-file-directory "emacs_backups"))
@@ -36,7 +47,7 @@
  version-control t
  )
 
-;;----------Browser----------
+;;----------browser----------
 (when (system-type-linux-p)
   (setq
    browse-url-browser-function 'browse-url-generic

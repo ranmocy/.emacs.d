@@ -1,13 +1,12 @@
 ;;==============================Hooks==============================
-(add-to-list 'auto-mode-alist '(".zshrc$" . shell-script-mode))
+(add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
+(add-to-list 'auto-mode-alist '("zshrc$" . shell-script-mode))
 
 (defun yasnippet-hook ()
   (autoload 'yas/global-mode "yasnippet" nil t)
   (yas/initialize)
   (global-set-key [backtab] `yas/expand)
-  ;; (setq yas/snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/el-get/yasnippet/extras/imported"))
-  ;; (setq yas/root-directory "~/.emacs.d/snippets")
-  ;; (yas/load-directory yas/root-directory)
+  (setq yas/snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/el-get/yasnippet/extras/imported"))
   (yas/global-mode 1))
 
 (defun ruby-mode-hook ()
@@ -15,7 +14,7 @@
   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
-  (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))  
+  (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
@@ -56,7 +55,7 @@
   (add-to-list 'auto-mode-alist '("\.sass$" . sass-mode)))
 
 (defun markdown-mode-hook ()
-  (autoload 'markdown-mode "markdown-mode.el"
-    "Major mode for editing Markdown files" t)
-  (add-to-list 'auto-mode-alist '("\\.markdown" . markdown-mode))
-  (add-to-list 'auto-mode-alist '("\\.text" . markdown-mode)))
+  (autoload 'markdown-mode "markdown-mode.el" nil t)
+  (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.text$" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode)))

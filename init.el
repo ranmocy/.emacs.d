@@ -1,8 +1,12 @@
 ;;====================init====================
 ;;----------define----------
-(defvar *last-record-load-time* (current-time))
-(push "/usr/local/bin" exec-path)
+;; (defvar *last-record-load-time* (current-time))
 (setq custom-file "~/.emacs.d/customize/set_custom.el")
+(setq plugin-path "~/.emacs.d/plugins/")
+(setenv "OLDPATH" (getenv "PATH"))
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "OLDPATH")))
+(add-to-list 'exec-path "/usr/local/bin/")
+(add-to-list 'load-path plugin-path)
 
 ;;----------custom-setting---------
 (load "~/.emacs.d/customize/set_functions")
@@ -19,4 +23,4 @@
 (load "~/.emacs.d/customize/set_package")
 
 ;;----------server----------
-(server-start)
+(unless (fboundp 'daemonp) (server-start))

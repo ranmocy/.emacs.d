@@ -3,20 +3,6 @@
 (mouse-avoidance-mode 'cat-and-mouse)   ;鼠标闪避exile banish animnate
 (setq mouse-yank-at-point t)            ;粘贴于光标处,而不是鼠标指针处
 
-;;----------界面设置----------
-(menu-bar-mode '-1)
-(when (window-system-gui-p)
-  (tool-bar-mode '-1)
-  (scroll-bar-mode '-1)
-  ;; (set-face-attribute 'mode-line nil :box nil :height 100)
-  )
-
-;;----------光标----------
-(when (window-system-gui-p)
-  (blink-cursor-mode '-1)               ;指针不闪动
-  (setq x-stretch-cursor t)             ;光标在 TAB 字符上会显示为一个大方块
-  )
-
 ;;----------lambda----------
 (defun pretty-lambdas ()
   "Display the word “lambda” by “λ”."
