@@ -5,7 +5,7 @@
  mark-diary-entries-in-calendar t                 ;标记有记录的日子
  mark-holidays-in-calendar nil                    ;标记节假日
  calendar-date-style 'iso                         ;日期格式种类
- diary-file "~/.emacs.d/.diary"                   ;日记文件
+ diary-file "~/.emacs.d/diary"                    ;日记文件
  appt-issue-message t                             ;弹窗约会提醒
 
  ;; 中文天干地支 from smth 在 calendar 中按 p C 就可以看到中文的天干地支了
@@ -67,7 +67,8 @@
                     ("F" . twittering-friends-timeline)
                     ("R" . twittering-replies-timeline)
                     ("U" . twittering-user-timeline)
-                    ("T" . twittering-organic-retweet)
+                    ("T" . twittering-native-retweet)
+                    ("." . twittering-toggle-reverse-mode)
                     ;; ("W" . twittering-update-status-interactive)
                     ))))
 ;; (add-hook 'twittering-new-tweets-hook (lambda ()
@@ -78,3 +79,13 @@
 ;;                     (format "You have %d new tweet%s"
 ;;                             n (if (> n 1) "s" ""))))))
 
+;;--------------------IRC--------------------
+;;可以使用正则表达式
+(setq erc-autojoin-channels-alist
+      '(
+        ("freenode.net" "#emacs" "#wiki" "#ubuntu-cn")
+        ))
+(defun erc-login ()
+  (interactive)
+  (erc :server "irc.freenode.net" :port 6667 :nick "ranmocy" :password irc-password)
+  )

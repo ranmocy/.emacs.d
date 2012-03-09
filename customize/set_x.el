@@ -7,9 +7,9 @@
         ;; (set-frame-font "DejaVu Sans Mono-16")
         ;; (set-frame-font "Inconsolata-18")
         ;; (set-frame-font "文泉驿等宽正黑-16")
-        ;; (set-frame-font "文泉驿等宽微米黑-20")
+        (set-frame-font "文泉驿等宽微米黑-12")
         ;; (set-frame-font "YaHeiMono-18")
-        (set-frame-font "YaHei Consolas Hybrid-16")
+        ;; (set-frame-font "YaHei Consolas Hybrid-16")
 
         (menu-bar-mode '-1)
         (when (window-system-gui-p)
@@ -30,7 +30,7 @@
                nil 0 nil "_NET_WM_STATE" 32
                '(2 "_NET_WM_STATE_FULLSCREEN" 0))
               )
-            (linux-fullscreen)
+            ;; (linux-fullscreen)
             )
           (when (system-type-darwin-p)
             (global-set-key (kbd "s-\\") 'ns-toggle-fullscreen)

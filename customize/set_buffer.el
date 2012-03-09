@@ -8,52 +8,20 @@
 ;;----------ibuffer----------
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; (add-to-list 'ibuffer-never-show-regexps "^\\*")
+(load (concat custom-path "/set_buffer_filters"))
 (setq ibuffer-saved-filter-groups
-      (quote (
-              ("default"
-               ("twitter" (or
-                           (name . ":home")
-                           (name . ":mentions")
-                           (name . ":replies")
-                           (name . ":friends")
-                           (mode . twittering-mode)
-                           ))
-               ("irc" (or
-                       (mode . rcirc-mode)
-                       ))
-               ("dired" (mode . dired-mode))
-               ("planner" (or
-                           (name . "^\\*Calendar\\*$")
-                           (name . "^diary$")
-                           (mode . muse-mode)
-                           (mode . org-mode)
-                           ))
-               ("gnus" (or
-                        (mode . message-mode)
-                        (mode . bbdb-mode)
-                        (mode . mail-mode)
-                        (mode . gnus-group-mode)
-                        (mode . gnus-summary-mode)
-                        (mode . gnus-article-mode)
-                        (name . "^\\.bbdb$")
-                        (name . "^\\.newsrc-dribble")
-                        ))
-               ("emacs" (or
-                         (name . "^\\*scratch\\*$")
-                         (name . "^\\*Messages\\*$")
-                         (name . "^\\*Warnings\\*$")
-                         (name . "^\\*Completions\\*$")
-                         (name . "^\\*.*\\*$")
-                         ))
-               (".emacs-settings" (mode . emacs-lisp-mode))
-               )
+      '(
+        ("default"
+         ("dired" (mode . dired-mode))
+         (".emacs-settings" (mode . emacs-lisp-mode))
+         )
 
-              ("work"
-               ("dired" (mode . dired-mode))
-               ("ruby" (mode . ruby-mode))
-               ("shell" (mode . shell-mode))
-               )
-              )))
+        ("work"
+         ("dired" (mode . dired-mode))
+         ("ruby" (mode . ruby-mode))
+         ("shell" (mode . shell-mode))
+         )
+        ))
 (add-hook 'ibuffer-mode-hook
           (lambda ()
             (ibuffer-switch-to-saved-filter-groups "default")))

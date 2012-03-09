@@ -1,7 +1,12 @@
-*.elc
+diary
 bookmarks
+personal-information.el
+
 auto-save-list/
 url/
-
 el-get/
 elpa/
+
+*~
+#?*
+*.elc

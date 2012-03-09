@@ -46,6 +46,7 @@
 (defun window-system-gui-p ()
   (or
    (eq window-system 'ns)
+   (eq window-system 'x)
    (eq window-system 'w32)
    ))
 

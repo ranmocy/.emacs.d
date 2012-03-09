@@ -17,12 +17,6 @@
 (setq font-lock-verbose t)
 (setq font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
 
-;;--------------------ispell--------------------
-(if (system-type-darwin-p)
-    (setq ispell-program-name "/usr/local/bin/aspell")
-  (if (system-type-linux-p)
-      (setq ispell-program-name "/usr/bin/ispell")))
-
 ;;--------------------hippie-expand--------------------
 (global-set-key [(meta ?/)] 'hippie-expand)
 (setq hippie-expand-try-functions-list

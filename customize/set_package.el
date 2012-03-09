@@ -68,6 +68,9 @@
                :type elpa
                :load "sass-mode.el"
                :after (lambda () (sass-mode-hook)))
+        (:name lua-mode
+               :type elpa
+               :load "lua-mode.el")
         (:name cucumber
                :type git
                :url "git://github.com/michaelklishin/cucumber.el.git"
