@@ -10,6 +10,9 @@
 
 (setq el-get-sources
       '(
+        (:name wanderlust
+               :type el-get
+               )
         (:name yasnippet
                :type git
                :url "git://github.com/capitaomorte/yasnippet.git"

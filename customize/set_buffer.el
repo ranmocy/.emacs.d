@@ -14,8 +14,16 @@
 (setq ibuffer-saved-filter-groups
       '(
         ("default"
+         ("org"
+          (mode . org-mode)
+          )
+         ("markdown"
+          (mode . markdown-mode)
+          )
          ("dired" (mode . dired-mode))
          (".emacs-settings" (mode . emacs-lisp-mode))
+         ("messages"
+          (name . "^\*.*\*$"))
          )
 
         ("work"
