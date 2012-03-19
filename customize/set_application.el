@@ -80,12 +80,22 @@
 ;;                             n (if (> n 1) "s" ""))))))
 
 ;;--------------------IRC--------------------
+;;----------erc----------
 ;;可以使用正则表达式
 (setq erc-autojoin-channels-alist
       '(
-        ("freenode.net" "#emacs" "#wiki" "#ubuntu-cn")
+        ("freenode.net" "#ubuntu-cn")
         ))
 (defun erc-login ()
   (interactive)
   (erc :server "irc.freenode.net" :port 6667 :nick "ranmocy" :password irc-password)
   )
+
+;;----------rcirc----------
+(setq rcirc-auto-authenticate-flag t)
+(setq rcirc-authinfo '(("freenode" nickserv "ranmocy" irc-password)))
+
+(setq rcirc-startup-channels-alist
+      '(("irc.freenode.net" :channels ("#ubuntu-cn"))))
+(setq rcirc-server-alist
+      `(("irc.freenode.net" :channels ("#ubuntu-cn"))))

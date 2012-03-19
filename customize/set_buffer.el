@@ -1,8 +1,10 @@
 ;;====================Buffer====================
 ;;----------dired----------
+(setq dired-omit-files "^\\...+$")                     ;hide hidden files
 (add-hook 'dired-mode-hook
           (lambda ()
             (require 'diredful)
+            (dired-omit-mode 1)
             ))
 
 ;;----------ibuffer----------
@@ -52,7 +54,7 @@
 (when (system-type-linux-p)
   (global-set-key [C-escape] 'kill-this-buffer)
   )
-(when (system-type-darwin-p)
+(when (not (system-type-windows-p))
   (global-set-key (kbd "s-o") `dired)
   (global-set-key (kbd "s-b") `ibuffer)
   (global-set-key (kbd "s-w") 'kill-this-buffer)

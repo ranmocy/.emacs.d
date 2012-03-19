@@ -15,9 +15,10 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (setq shell-file-name "/bin/bash")
-(global-set-key (kbd "C-c t") '(lambda ()
-                                (interactive)
-                                (term shell-file-name)))
+(global-set-key (kbd "C-c t")
+                '(lambda ()
+                   (interactive)
+                   (term shell-file-name)))
 
 ;;----------auto-save----------
 (if (system-type-unix-like-p)
