@@ -37,4 +37,15 @@
 
 ;; set different states
 (setq org-todo-keywords
-      '((sequence "TODO" "FEEDBACK" "VERIFY" "TEST" "|" "DONE" "DELEGATED")))
+      '((sequence "TODO(t)" "DOING(i!)" "HANGUP(h!)" "|" "DONE(d!)" "CANCEL(c!)")))
+
+(defun toggle-line-spacing ()
+  "Toggle line spacing between no extra space to extra half line height."
+  (interactive)
+  (if (eq line-spacing nil)
+      (setq-default line-spacing 0.5) ; add 0.5 height between lines
+    (setq-default line-spacing nil)   ; no extra heigh between lines
+    )
+  (redraw-display))
+(setq-default line-spacing 0.5)
+(global-set-key (kbd "<f7>") 'toggle-line-spacing)
