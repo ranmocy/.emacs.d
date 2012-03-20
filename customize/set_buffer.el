@@ -58,13 +58,12 @@
 (setq tabbar-help-on-tab-function nil)
 
 ;;----------kill-buffer----------
-(global-set-key [C-tab] 'other-window)
-(when (system-type-linux-p)
-  (global-set-key [C-escape] 'kill-this-buffer)
-  )
+(global-set-key [(control tab)] 'other-window)
 (when (not (system-type-windows-p))
-  (global-set-key (kbd "s-o") `dired)
-  (global-set-key (kbd "s-b") `ibuffer)
+  (global-set-key (kbd "s-o") 'dired)
+  (global-set-key (kbd "s-b") 'ibuffer)
   (global-set-key (kbd "s-w") 'kill-this-buffer)
   (global-set-key (kbd "s-q") 'delete-frame)
+  (global-set-key [C-escape] 'kill-this-buffer)
+  (global-set-key (kbd "s-<backspace>") 'kill-this-buffer)
   )

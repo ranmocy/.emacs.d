@@ -20,6 +20,7 @@
 (load (concat custom-path "/set_language"))
 (load (concat custom-path "/set_ui"))
 (load (concat custom-path "/set_x"))
+(load (concat custom-path "/set_org"))
 (load (concat custom-path "/set_application"))
 
 (load (concat custom-path "/set_hook"))
@@ -28,24 +29,13 @@
 ;;----------server----------
 (unless (fboundp 'daemonp) (server-start))
 
-(add-hook 'org-mode-hook 
-          (lambda () (setq truncate-lines t)))
-
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-
-;; set different states
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "DOING(i!)" "HANGUP(h!)" "|" "DONE(d!)" "CANCEL(c!)")))
-
 (defun toggle-line-spacing ()
   "Toggle line spacing between no extra space to extra half line height."
   (interactive)
   (if (eq line-spacing nil)
-      (setq-default line-spacing 0.5) ; add 0.5 height between lines
+      (setq-default line-spacing 0.3) ; add 0.5 height between lines
     (setq-default line-spacing nil)   ; no extra heigh between lines
     )
   (redraw-display))
-(setq-default line-spacing 0.5)
+(setq-default line-spacing 0.3)
 (global-set-key (kbd "<f7>") 'toggle-line-spacing)

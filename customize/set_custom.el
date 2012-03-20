@@ -1,17 +1,7 @@
-;;----------Personal----------
-(setq
- user-full-name "Ranmocy Sheng"
- user-mail-address "Ranmocy@gmail.com"
- )
-
 ;;----------Shortcut----------
 (define-prefix-command 'run-map)
 (global-set-key (kbd "C-`") 'run-map)
-(define-key 'run-map (kbd "d") 'dired)
 (define-key 'run-map (kbd "s") 'eshell)
-(define-key 'run-map (kbd "t") 'todo-show)
-(define-key 'run-map (kbd "c") 'calendar)
-(define-key 'run-map (kbd "r") 'remember)
 
 ;;----------General----------
 (fset 'yes-or-no-p 'y-or-n-p)           ;以 y/n代表 yes/no
@@ -45,7 +35,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(ibus-python-shell-command-name "python2")
+ '(org-agenda-files (quote ("~/gtd.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

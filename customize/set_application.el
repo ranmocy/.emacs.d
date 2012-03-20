@@ -1,3 +1,7 @@
+;;--------------------Shortcut--------------------
+(define-key 'run-map (kbd "c") 'calendar)
+(define-key 'run-map (kbd "t") 'todo-show)
+
 ;;--------------------Calendar--------------------
 (setq
  calendar-remove-frame-by-deleting t              ;关闭日历
