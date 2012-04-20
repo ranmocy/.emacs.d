@@ -15,8 +15,8 @@
 
 ;;----------Apple-Keyboard-Remap----------
 (when (system-type-darwin-p)
-  (setq mac-command-modifier 'super)
-  (setq mac-option-modifier 'meta)
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier 'super)
   (setq mac-control-modifier 'control)
   (setq mac-function-modifier 'super)
   (setq mac-right-option-modifier nil)

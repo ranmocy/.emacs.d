@@ -7,7 +7,7 @@
         ;; (set-frame-font "DejaVu Sans Mono-16")
         ;; (set-frame-font "Inconsolata-18")
         ;; (set-frame-font "文泉驿等宽正黑-16")
-        (set-frame-font "文泉驿等宽微米黑-12")
+        (set-frame-font "文泉驿等宽微米黑-16")
         ;; (set-frame-font "YaHeiMono-18")
         ;; (set-frame-font "YaHei Consolas Hybrid-16")
 
