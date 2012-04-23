@@ -6,7 +6,8 @@
   (autoload 'yas/global-mode "yasnippet" nil t)
   (yas/initialize)
   (global-set-key [backtab] `yas/expand)
-  (setq yas/snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/el-get/yasnippet/extras/imported"))
+  ;; (setq yas/snippet-dirs '("~/.emacs.d/snippets"))
+  (yas/load-directory "~/.emacs.d/snippets")
   (yas/global-mode 1))
 
 (defun ruby-mode-hook ()
@@ -56,6 +57,12 @@
 
 (defun markdown-mode-hook ()
   (autoload 'markdown-mode "markdown-mode.el" nil t)
-  (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
-  (add-to-list 'auto-mode-alist '("\\.text$" . markdown-mode))
-  (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode)))
+  (add-to-list 'auto-mode-alist '("\\.\\(markdown\\|md\\|text\\)$" . markdown-mode))
+  (define-key markdown-mode-map
+    (kbd "<tab>")
+    (lambda()
+      (interactive)
+      (let ((yas/fallback-behavior 'return-nil))
+        (unless (yas/expand)
+          (message "markdown-cycle should be called")
+          (markdown-cycle))))))

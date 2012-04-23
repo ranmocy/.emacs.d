@@ -1,11 +1,17 @@
 ;;====================Buffer====================
 ;;----------dired----------
-(setq dired-omit-files "^\\...+$")                     ;hide hidden files
-(add-hook 'dired-mode-hook
-          (lambda ()
-            (require 'diredful)
-            (dired-omit-mode 1)
+(setq dired-omit-files "^\\...+$")      ;hide hidden files
+(add-hook 'dired-load-hook
+          '(lambda ()
+             (require 'dired-details)
+             (require 'diredful)
             ))
+(add-hook 'dired-mode-hook
+          '(lambda ()
+             (local-set-key "(" 'dired-details-hide)
+             (local-set-key ")" 'dired-details-show)
+             (dired-omit-mode 1)
+             ))
 
 ;;----------ibuffer----------
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -51,19 +57,26 @@
 ;;----------tabbar----------
 (load "~/.emacs.d/plugins/tabbar/tabbar")
 (tabbar-mode t)
-(global-set-key (kbd "s-[") 'tabbar-backward-tab)
-(global-set-key (kbd "s-]") 'tabbar-forward-tab)
-(global-set-key (kbd "s-{") 'tabbar-backward-group)
-(global-set-key (kbd "s-}") 'tabbar-forward-group)
+(global-set-key (kbd "M-[") 'tabbar-backward-tab)
+(global-set-key (kbd "M-]") 'tabbar-forward-tab)
+(global-set-key (kbd "s-[") 'tabbar-backward-group)
+(global-set-key (kbd "s-]") 'tabbar-forward-group)
 (setq tabbar-help-on-tab-function nil)
 
-;;----------kill-buffer----------
-(global-set-key [(control tab)] 'other-window)
+;;----------buffer-control----------
+(global-set-key (kbd "s-`") 'other-window)
 (when (not (system-type-windows-p))
-  (global-set-key (kbd "s-o") 'dired)
+  (global-set-key (kbd "s-d") 'dired)
   (global-set-key (kbd "s-b") 'ibuffer)
-  (global-set-key (kbd "s-w") 'kill-this-buffer)
+  (global-set-key (kbd "s-w") 'kill-this-buffer-unless-some)
   (global-set-key (kbd "s-q") 'delete-frame)
   (global-set-key [C-escape] 'kill-this-buffer)
   (global-set-key (kbd "s-<backspace>") 'kill-this-buffer)
   )
+;; you can modify that list, to fit your needs
+(setq protected-buffer-list '("*scratch*" "#emacs" "*Messages*" "irc.freenode.net:6667"))
+(defun kill-this-buffer-unless-some ()
+  (interactive)
+  (if (member (buffer-name (current-buffer)) protected-buffer-list)
+      (bury-buffer)
+    (kill-buffer (current-buffer))))

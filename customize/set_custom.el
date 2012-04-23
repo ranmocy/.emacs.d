@@ -1,6 +1,6 @@
 ;;----------Shortcut----------
 (define-prefix-command 'run-map)
-(global-set-key (kbd "C-`") 'run-map)
+(global-set-key (kbd "C-z") 'run-map)
 (define-key 'run-map (kbd "s") 'eshell)
 
 ;;----------General----------
