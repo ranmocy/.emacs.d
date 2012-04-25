@@ -50,6 +50,12 @@
 (add-hook 'twittering-edit-mode-hook
           (lambda () (ispell-minor-mode) (flyspell-mode)))
 
+(setq twittering-proxy-use t)
+(setq twittering-proxy-server "127.0.0.1")
+(setq twittering-proxy-port 8087)
+;; (setq twittering-proxy-user "username")
+;; (setq twittering-proxy-password "password")
+
 (setq twittering-initial-timeline-spec-string
       '(":home"
         ":replies"
@@ -75,14 +81,15 @@
                     ("." . twittering-toggle-reverse-mode)
                     ;; ("W" . twittering-update-status-interactive)
                     ))))
-(add-hook 'twittering-new-tweets-hook
-          (lambda ()
-            (let ((n twittering-new-tweets-count))
-              (start-process "twittering-notify" nil "notify-send"
-                             "-i" "/usr/share/pixmaps/gnome-emacs.png"
-                             "New tweets"
-                             (format "You have %d new tweet%s"
-                                     n (if (> n 1) "s" ""))))))
+(when (system-type-linux-p)
+  (add-hook 'twittering-new-tweets-hook
+            (lambda ()
+              (let ((n twittering-new-tweets-count))
+                (start-process "twittering-notify" nil "notify-send"
+                               "-i" "/usr/share/pixmaps/gnome-emacs.png"
+                               "New tweets"
+                               (format "You have %d new tweet%s"
+                                       n (if (> n 1) "s" "")))))))
 
 ;;--------------------IRC--------------------
 ;;----------erc----------
