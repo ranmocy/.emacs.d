@@ -47,3 +47,4 @@
   ;; Specific python2
   (custom-set-variables '(ibus-python-shell-command-name "python2"))
   )
+
