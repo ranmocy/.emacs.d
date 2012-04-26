@@ -16,7 +16,7 @@
 ;;----------ibuffer----------
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; (add-to-list 'ibuffer-never-show-regexps "^\\*")
-(load (concat custom-path "/set_buffer_filters"))
+(load (concat custom-path "set_buffer_filters"))
 (setq ibuffer-saved-filter-groups
       '(
         ("default"

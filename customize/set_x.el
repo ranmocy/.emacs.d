@@ -51,7 +51,7 @@
         )))
 
 ;;----------Add-Hook----------
-(load-theme 'tango-dark)
+(load-theme 'zenburn)
 (add-hook 'after-make-frame-functions 'set-frame)
 (unless (eq nil (selected-frame))
   (set-frame (selected-frame)))
