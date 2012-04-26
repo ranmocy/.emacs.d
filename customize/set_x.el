@@ -27,7 +27,7 @@
           (set-cursor-color "LightBlue") ;カーソルの色を設定----------
 
           ;;----------背景を透過させる----------
-          (set-frame-parameter nil 'alpha '(95 80))
+          (set-frame-parameter nil 'alpha '(100 75))
           (when (system-type-darwin-p)
             ;; マウス・スクロールを滑らかにする（Mac Emacs 専用）
             (setq mac-mouse-wheel-smooth-scroll t)
