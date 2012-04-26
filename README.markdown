@@ -16,7 +16,7 @@ This project just aims to set some little rules to make the custom files a littl
 ## Path Rules
 * Every customized files are under `customize/`, separated into different directory by classifications.
 * Packages are managed by `el-get` under `el-get/` unitedly.
-* Third-parties packages out of the `el-get` will be placed under `plugins/`.
+* Third-parties packages out of the `el-get` will be placed under `plugins/`. Never modified directly.
 * Themes are under `themes/` used by Emacs 24 integrated themes management.
 * Snippets are under `snippets/` used by `yasnippet`.
 * Everything sensitive is in `personal-information.el`.

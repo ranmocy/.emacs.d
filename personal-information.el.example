@@ -1,0 +1,13 @@
+;;;; personal-information.el
+;; for anything sensitive
+
+(setq
+ user-full-name "Your Name"
+ user-mail-address "Your@email.com"
+ )
+
+(defvar irc-password "your_password")
+
+(defvar org-gtd-file "~/gtd.org")
+
+(provide 'personal-information)
