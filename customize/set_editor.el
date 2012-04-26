@@ -48,3 +48,35 @@
   (custom-set-variables '(ibus-python-shell-command-name "python2"))
   )
 
+;;----------evil----------
+(eval-after-load "evil"
+  '(progn
+     (define-key evil-normal-state-map "\C-r" 'isearch-backward)
+     (define-key evil-normal-state-map "\C-e" 'end-of-line)
+     (define-key evil-normal-state-map "\C-n" 'next-line)
+     (define-key evil-normal-state-map "\C-p" 'previous-line)
+
+     (define-key evil-insert-state-map "\C-r" 'isearch-backward)
+     (define-key evil-insert-state-map "\C-e" 'end-of-line)
+     (define-key evil-insert-state-map "\C-n" 'next-line)
+     (define-key evil-insert-state-map "\C-p" 'previous-line)
+
+     ;; viper-cua-region-fix
+     (define-key evil-normal-state-map [backspace] 'backward-delete-char-untabify)
+     (define-key evil-insert-state-map [backspace] 'backward-delete-char-untabify)
+     ;; (define-key viper-vi-global-user-map "\C-d" 'delete-char)
+     ;; (define-key viper-insert-global-user-map "\C-d" 'delete-char)
+
+     (setq evil-default-cursor '("LightBlue" box))
+     ;; (setq evil-normal-state-cursor '("LightBlue" box))
+     ;; (setq evil-insert-state-cursor '("LightBlue" box))
+     ;; (setq evil-visual-state-cursor '("LightBlue" box))
+     ;; (setq evil-motion-state-cursor '("LightBlue" box))
+     ;; (setq evil-replace-state-cursor '("LightBlue" box))
+     ;; (setq evil-operator-state-cursor '("LightBlue" box))
+     (setq evil-emacs-state-cursor '("Red" box))
+     ))
+(add-to-list 'load-path "~/.emacs.d/plugins/evil")
+(require 'evil)
+(evil-mode 1)
+
