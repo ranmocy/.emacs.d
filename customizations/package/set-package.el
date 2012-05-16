@@ -5,7 +5,9 @@
 (setq el-get-sources
       '(
         ;; (:name wanderlust
-        ;;        :type el-get
+        ;;        :type git
+        ;;        :url "git://github.com/wanderlust/wanderlust.git"
+        ;;        :after (lambda () (wanderlust-hook))
         ;;        )
         (:name yasnippet
                :type git
@@ -79,7 +81,7 @@
                :type elpa)
         )
       )
-(el-get 'sync
+(el-get 'wait
         (append '(el-get google-maps)
                 (mapcar 'el-get-source-name el-get-sources)))
 

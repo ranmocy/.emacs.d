@@ -7,7 +7,12 @@
         (when (system-type-linux-p)
           (set-frame-font "文泉驿等宽正黑-14"))
         (when (system-type-darwin-p)
-          (set-frame-font "YaHeiMono-16"))
+          (set-frame-font "Luxi Mono-18")
+          (set-fontset-font
+           (frame-parameter nil 'font)
+           'han
+           (font-spec :family "Hiragino Sans GB" ))
+          )
         ;; (set-frame-font "DejaVu Sans Mono-16")
         ;; (set-frame-font "Inconsolata-16")
         ;; (set-frame-font "文泉驿等宽微米黑-12")

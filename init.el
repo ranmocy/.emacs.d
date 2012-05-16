@@ -14,6 +14,7 @@
 ;; Basically it can adapt MacOS and any distribution of GNU/Linux.
 
 ;;----------Path----------
+(add-to-list 'exec-path "/usr/local/bin")
 (setq custom-load-path (expand-file-name "customizations/" user-emacs-directory)) ; customization files
 (setq custom-file (expand-file-name "set-custom.el" custom-load-path)) ; Emacs default customization file
 (setq plugin-load-path (expand-file-name "plugins/" user-emacs-directory)) ; Third-party packages path
@@ -58,3 +59,26 @@
 (unless (fboundp 'daemonp) (server-start))
 
 ;;; init.el ends here
+
+(setq gnus-select-method
+      '(nnimap "gmail"
+               (nnimap-address "imap.gmail.com")
+               (nnimap-server-port 993)
+               (nnimap-stream ssl)
+               (nnimap-authinfo-file "~/.authinfo.gpg")
+               ))
+(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+      smtpmail-auth-credentials '(("smtp.gmail.com" 587 "username@gmail.com" nil))
+      smtpmail-default-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587
+      ;; smtpmail-local-domain "yourcompany.com"
+      )
+
+(if (locate-library "edit-server")
+    (progn
+      (require 'edit-server)
+      (unless (daemonp)
+        (setq edit-server-new-frame nil))
+      (edit-server-start)))

@@ -1,5 +1,7 @@
+(require 'set-auto-save)
+(require 'set-auto-backup)
 (require 'set-mac-modifier)
-(require 'set-evil)
+;; (require 'set-evil)
 (require 'set-ibus)
 (require 'set-ispell)
 (require 'set-search)

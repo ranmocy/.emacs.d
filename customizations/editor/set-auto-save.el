@@ -4,10 +4,12 @@
   )
 (make-directory autosave-dir t)
 (setq
+ auto-save-file-name-transforms `(("\\(?:[^/]*/\\)*\\(.*\\)" ,(concat autosave-dir "\\1") t))
+ auto-save-interval 300
+ auto-save-timeout 3
  ;; auto-save-default t
  ;; auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
  ;; auto-save-file-name-transforms `((".*" ,autosave-dir))
- auto-save-file-name-transforms `(("\\(?:[^/]*/\\)*\\(.*\\)" ,(concat autosave-dir "\\1") t))
  )
 
 (provide 'set-auto-save)
