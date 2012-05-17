@@ -21,10 +21,9 @@
 
 ;; Some projects need their own org files, but I still want them to
 ;; show up in my agenda.
-;; (defvar org-gtd-other-files)
-;; (setf org-gtd-other-files (list "~/todo.org"))
-;; (setf org-agenda-files (cons org-gtd-file org-gtd-other-files))
-(setf org-agenda-files org-gtd-file)
+(defvar my-org-gtd-other-files)
+(setf my-org-gtd-other-files (list my-org-todo-file my-org-remember-file))
+(setf org-agenda-files (cons my-org-gtd-file my-org-gtd-other-files))
 
 ;; I put the archive in a separate file, because the gtd file will
 ;; probably already get pretty big just with current tasks.
@@ -55,17 +54,19 @@
 
 
 ;; set different states
-(setq org-todo-keywords '(
-                          (sequence "TODO(t)" "WAITING(w!)" "NEXT(n!)" "DOING(i!)" "|" "DONE(d!)")
-                          (sequence "|" "CANCELLED(c!)")
-                          ))
+(setq org-todo-keywords
+      '(
+        (sequence "TODO(t)" "WAITING(w!)" "NEXT(n!)" "DOING(i!)" "|" "DONE(d!)")
+        (sequence "|" "CANCELLED(c!)")
+        ))
 ;; I like to color-code task types.
-(setf org-todo-keyword-faces '(
-                               ("TODO" . (:foreground "cyan" :background "steelblue" :bold t :weight bold))
-                               ("WAITING" . (:foreground "yellow" :background "magenta" :bold t :weight bold))
-                               ("NEXT" . (:foreground "yellow" :background "red" :bold t :weight bold))
-                               ("DONE" . (:foreground "gray50" :background "gray30"))
-                               ))
+(setf org-todo-keyword-faces
+      '(
+        ("TODO" . (:foreground "cyan" :background "steelblue" :bold t :weight bold))
+        ("WAITING" . (:foreground "yellow" :background "magenta" :bold t :weight bold))
+        ("NEXT" . (:foreground "yellow" :background "red" :bold t :weight bold))
+        ("DONE" . (:foreground "gray50" :background "gray30"))
+        ))
 
 ;; Easy basic searches. Get a quick view of nextactions, etc
 (setq org-agenda-custom-commands
@@ -74,27 +75,28 @@
         ("d" "Agenda + Next Actions" ((agenda) (todo "NEXT")))))
 
 ;; I use org's tag feature to implement contexts.
-(setq org-tag-alist '(
-                      ("LIBRARY" . ?l)
-                      ("COMPUTER" . ?c)
-                      ;; ("MAIL" . ?m)
-                      ;; ("HOME" . ?h)
-                      ;; ("FIELD" . ?f)
-                      ("READING" . ?r)
-                      ("MOVIE" . ?d)
-                      ))
+(setq org-tag-alist
+      '(
+        ("LIBRARY" . ?l)
+        ("COMPUTER" . ?c)
+        ;; ("MAIL" . ?m)
+        ;; ("HOME" . ?h)
+        ;; ("FIELD" . ?f)
+        ("READING" . ?r)
+        ("MOVIE" . ?d)
+        ))
 
 ;;----------remember----------
 (setq org-reverse-note-order t)  ;; note at beginning of file by default.
-(setq org-default-notes-file "~/remember.org")
+(setq org-default-notes-file my-org-remember-file)
 (setq remember-annotation-functions '(org-remember-annotation))
 (setq remember-handler-functions '(org-remember-handler))
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
 
 (setq org-remember-templates
-      '((?t "* TODO %?\n  %i\n  %a" "~/todo.org")
-        (?j "* %U %?\n\n  %i\n  %a" "~/journal.org")
-        (?i "* %^{Title}\n  %i\n  %a" "~/remember.org" "New Ideas")))
+      '((?t "* TODO %?\n  %i\n  %a" my-org-todo-file)
+        (?j "* %U %?\n\n  %i\n  %a" my-org-journal-file)
+        (?i "* %^{Title}\n  %i\n  %a" my-org-remember-file "New Ideas")))
 
 ;;----------misc----------
 (setq org-return-follows-link t)
@@ -107,7 +109,7 @@
 (setq org-fontify-emphasized-text t)
 (setq org-fontify-done-headline t)
 (setq org-agenda-include-all-todo nil)
-(setq org-directory "~/")
+(setq org-directory my-org-directory)
 (setq org-export-html-style "<link rel=stylesheet href=\"./org.css\" type=\"text/css\">")
 (setq org-export-with-section-numbers nil)
 (setq org-export-with-toc nil)
