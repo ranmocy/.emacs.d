@@ -5,7 +5,7 @@
  mark-diary-entries-in-calendar t                 ;标记有记录的日子
  mark-holidays-in-calendar nil                    ;标记节假日
  calendar-date-style 'iso                         ;日期格式种类
- diary-file "~/.emacs.d/diary"                    ;日记文件
+ diary-file my/diary-file                         ;日记文件
  appt-issue-message t                             ;弹窗约会提醒
 
  ;; 中文天干地支 from smth 在 calendar 中按 p C 就可以看到中文的天干地支了

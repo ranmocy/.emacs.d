@@ -8,10 +8,17 @@
 
 (defvar irc-password "your_password")
 
-(defvar my-org-directory "~/Org/")
-(defvar my-org-gtd-file (expand-file-name "gtd.org" my-org-directory))
-(defvar my-org-todo-file (expand-file-name "todo.org" my-org-directory))
-(defvar my-org-journal-file (expand-file-name "journal.org" my-org-directory))
-(defvar my-org-remember-file (expand-file-name "remember.org" my-org-directory))
+(setq
+ my/org-directory "~/Org/"
+ my/org-gtd-file (expand-file-name "gtd.org" my-org-directory)
+ my/org-todo-file (expand-file-name "todo.org" my-org-directory)
+ my/org-journal-file (expand-file-name "journal.org" my-org-directory)
+ my/org-remember-file (expand-file-name "remember.org" my-org-directory)
+ )
+
+(setq
+ my/diary-file "~/.emacs.d/.diary"
+ my/bookmark-file "~/.emacs.d/.bookmarks"
+ )
 
 (provide 'personal-information)

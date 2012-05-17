@@ -1,32 +1,29 @@
 ;;--------------------Org-Mode--------------------
 (require 'cl)
 
-;; I open my gtd file when I hit C-c g
+;; Just open my gtd file.
 (defun gtd ()
   "Open the GTD file."
   (interactive)
-  (find-file org-gtd-file))
+  (find-file my/org-gtd-file))
+(global-set-key "\C-cg" 'gtd)
 
 (add-hook 'org-mode-hook
           '(lambda ()
-             ;; Some basic keybindings.
              (define-prefix-command 'org-mode-map)
              (local-set-key (kbd "C-`") 'org-mode-map)
-             (define-key 'org-mode-map "g" 'gtd)
              (define-key 'org-mode-map "a" 'org-agenda)
              (define-key 'org-mode-map "b" 'org-iswitchb)
              (define-key 'org-mode-map "r" 'org-remember)
              (define-key 'org-mode-map "l" 'org-store-link)
              ))
 
-;; Some projects need their own org files, but I still want them to
-;; show up in my agenda.
-(defvar my-org-gtd-other-files)
-(setf my-org-gtd-other-files (list my-org-todo-file my-org-remember-file))
-(setf org-agenda-files (cons my-org-gtd-file my-org-gtd-other-files))
+;; agenda-files
+(defvar my/org-gtd-other-files)
+(setf my/org-gtd-other-files (list my/org-todo-file my/org-remember-file))
+(setf org-agenda-files (cons my/org-gtd-file my/org-gtd-other-files))
 
-;; I put the archive in a separate file, because the gtd file will
-;; probably already get pretty big just with current tasks.
+;; Archive in a separate file
 (setq org-archive-location "%s_archive::")
 
 ;; Set up hook
@@ -50,8 +47,6 @@
             ;; yasnippet (allow yasnippet to do its thing in org files)
             (org-set-local 'yas/trigger-key [tab])
             (define-key yas/keymap [tab] 'yas/next-field-group)))
-
-
 
 ;; set different states
 (setq org-todo-keywords
@@ -88,15 +83,15 @@
 
 ;;----------remember----------
 (setq org-reverse-note-order t)  ;; note at beginning of file by default.
-(setq org-default-notes-file my-org-remember-file)
+(setq org-default-notes-file my/org-remember-file)
 (setq remember-annotation-functions '(org-remember-annotation))
 (setq remember-handler-functions '(org-remember-handler))
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
 
 (setq org-remember-templates
-      '((?t "* TODO %?\n  %i\n  %a" my-org-todo-file)
-        (?j "* %U %?\n\n  %i\n  %a" my-org-journal-file)
-        (?i "* %^{Title}\n  %i\n  %a" my-org-remember-file "New Ideas")))
+      '((?t "* TODO %?\n  %i\n  %a" my/org-todo-file)
+        (?j "* %U %?\n\n  %i\n  %a" my/org-journal-file)
+        (?i "* %^{Title}\n  %i\n  %a" my/org-remember-file "New Ideas")))
 
 ;;----------misc----------
 (setq org-return-follows-link t)
@@ -109,7 +104,7 @@
 (setq org-fontify-emphasized-text t)
 (setq org-fontify-done-headline t)
 (setq org-agenda-include-all-todo nil)
-(setq org-directory my-org-directory)
+(setq org-directory my/org-directory)
 (setq org-export-html-style "<link rel=stylesheet href=\"./org.css\" type=\"text/css\">")
 (setq org-export-with-section-numbers nil)
 (setq org-export-with-toc nil)
