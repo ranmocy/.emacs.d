@@ -1,6 +1,28 @@
 ;;--------------------Org-Mode--------------------
 (require 'cl)
 
+;; Define custom
+(defcustom my/org-directory "~/"
+  "Customized Org files direcotry."
+  :type 'directory
+  :group 'org)
+(defcustom my/org-gtd-file (expand-file-name "gtd.org" my/org-directory)
+  "GTD file location."
+  :type 'file
+  :group 'org)
+(defcustom my/org-todo-file (expand-file-name "todo.org" my/org-directory)
+  "TODO file location."
+  :type 'file
+  :group 'org)
+(defcustom my/org-journal-file (expand-file-name "journal.org" my/org-directory)
+  "Journal file location."
+  :type 'file
+  :group 'org)
+(defcustom my/org-remember-file (expand-file-name "remember.org" my/org-directory)
+  "Remember file location."
+  :type 'file
+  :group 'org)
+
 ;; Just open my gtd file.
 (defun gtd ()
   "Open the GTD file."

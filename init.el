@@ -16,7 +16,7 @@
 ;;----------Path----------
 (add-to-list 'exec-path "/usr/local/bin")
 (setq custom-load-path (expand-file-name "customizations/" user-emacs-directory)) ; customization files
-(setq custom-file (expand-file-name "set-custom.el" custom-load-path)) ; Emacs default customization file
+(setq custom-file (expand-file-name "customize.el" user-emacs-directory)) ; Emacs default customization file
 (setq plugin-load-path (expand-file-name "plugins/" user-emacs-directory)) ; Third-party packages path
 (setq custom-theme-load-path (list (expand-file-name "themes/" user-emacs-directory) t)) ; t for Emacs 24 default themes
 
@@ -43,10 +43,9 @@
                 (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
 
 ;;----------custom-setting---------
-(require 'personal-information)
+(require 'customize)
 (require 'set-function)
 (require 'set-environment)
-(require 'set-custom)
 (require 'set-editor)
 (require 'set-buffer)
 (require 'set-language)

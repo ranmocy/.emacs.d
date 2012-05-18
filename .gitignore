@@ -1,6 +1,6 @@
 .diary
 .bookmarks
-personal-information.el
+customize.el
 
 auto-save-list/
 url/
