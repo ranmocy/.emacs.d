@@ -37,18 +37,4 @@
                    (mode . org-mode)
                    )))
 
- (defun tabbar-buffer-groups ()
-   (list
-    (cond
-     ((string-equal "*" (substring (buffer-name) 0 1))
-      '("Emacs Buffer")
-      )
-     ;; ((eq major-mode 'dired-mode)
-     ;;  '("Dired")
-     ;;  )
-     (t
-      '("Default")
-      )
-     )))
-
 (provide 'set-buffer-filter)

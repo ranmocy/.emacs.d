@@ -8,10 +8,6 @@
 (global-set-key (kbd "s-=") 'tabbar-press-home)
 (setq tabbar-help-on-tab-function nil)
 
-;; 全部的buffer都分一组，否则这个修改是没任何意思的
-;; (setq tabbar-buffer-groups-function
-;;       (lambda () (list "All Buffers")))
-
 ;; 去掉emacs自带的几个buffer
 (setq tabbar-buffer-list-function
       (lambda ()
@@ -19,6 +15,14 @@
          (lambda(buffer)
            (find (aref (buffer-name buffer) 0) " *"))
          (buffer-list))))
+
+;; tabbar groups function
+(defun tabbar-buffer-groups ()
+  (list
+   (if (eq major-mode 'dired-mode)
+       "Dired"
+     "Default"
+     )))
 
 ;; 切换到第N个buffer，1为第一个，负数表示从后数，注意0会出错，这里就不处理了
 (defun switch-tabbar (num)

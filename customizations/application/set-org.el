@@ -1,5 +1,6 @@
 ;;--------------------Org-Mode--------------------
 (require 'cl)
+(require 'org-bookmark)
 
 ;; Define custom
 (defcustom my/org-directory "~/"
@@ -30,15 +31,16 @@
   (find-file my/org-gtd-file))
 (global-set-key "\C-cg" 'gtd)
 
-(add-hook 'org-mode-hook
-          '(lambda ()
-             (define-prefix-command 'org-mode-map)
-             (local-set-key (kbd "C-`") 'org-mode-map)
-             (define-key 'org-mode-map "a" 'org-agenda)
-             (define-key 'org-mode-map "b" 'org-iswitchb)
-             (define-key 'org-mode-map "r" 'org-remember)
-             (define-key 'org-mode-map "l" 'org-store-link)
-             ))
+;; TODO
+;; (add-hook 'org-mode-hook
+;;           '(lambda ()
+;;              (define-prefix-command 'org-mode-map)
+;;              (local-set-key (kbd "C-`") 'org-mode-map)
+;;              (define-key 'org-mode-map "a" 'org-agenda)
+;;              (define-key 'org-mode-map "b" 'org-iswitchb)
+;;              (define-key 'org-mode-map "r" 'org-remember)
+;;              (define-key 'org-mode-map "l" 'org-store-link)
+;;              ))
 
 ;; agenda-files
 (defvar my/org-gtd-other-files)
