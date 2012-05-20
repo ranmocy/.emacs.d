@@ -11,7 +11,7 @@
               (select-frame new-frame)
               (or ibus-mode (ibus-mode-on))))
   ;; Specific python2
-  (custom-set-variables '(ibus-python-shell-command-name "python2"))
+  (setq ibus-python-shell-command-name "python2")
   )
 
 (provide 'set-ibus)

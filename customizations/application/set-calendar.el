@@ -18,6 +18,8 @@
  calendar-location-name "Shanghai"
  calendar-latitude +31.024994
  calendar-longitude +121.431607
+
+ diary-file "~/.emacs.d/.diary"
  )
 
 (provide 'set-calendar)

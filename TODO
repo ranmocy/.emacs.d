@@ -24,7 +24,11 @@ Every single feature should centralized into a single file.
 ** add to packages list from other files
 * TODO custom file
 ** move out unless it truelly sensitive.
-
-Some Ideas
-* tabbar groups by projects
+* MAYBE Some Ideas
+CLOSED: [2012-05-20 Sun 17:04]
+** tabbar groups by projects
 Judge with function is-rails-project-p and name with root directory name.
+
+** rails snippets
+** find file
+http://emacswiki.org/emacs/TextMate

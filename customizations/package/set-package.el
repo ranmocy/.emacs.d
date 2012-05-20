@@ -4,18 +4,10 @@
 
 (setq el-get-sources
       '(
-        ;; (:name wanderlust
-        ;;        :type git
-        ;;        :url "git://github.com/wanderlust/wanderlust.git"
-        ;;        :after (lambda () (wanderlust-hook))
-        ;;        )
         (:name yasnippet
                :type git
                :url "git://github.com/capitaomorte/yasnippet.git"
                :after (lambda () (yasnippet-hook)))
-        ;; (:name yasnippet-bundle
-        ;;        :type elpa
-        ;;        :load "yasnippet-bundle.el")
         (:name textmate
                :type git
                :url "git://github.com/defunkt/textmate.el"
@@ -42,6 +34,9 @@
                :url "git://github.com/qoobaa/ruby-electric.git"
                :load "ruby-electric.el")
 
+        ;; Rails
+        (:name rinari
+               :type elpa)
 
         ;; File Modes
         (:name markdown-mode
@@ -76,11 +71,13 @@
                :load "feature-mode.el"
                :after (lambda () (feature-mode-hook)))
 
-        ;; Rails
-        (:name rinari
-               :type elpa)
-        )
-      )
+        ;; (:name wanderlust
+        ;;        :type git
+        ;;        :url "git://github.com/wanderlust/wanderlust.git"
+        ;;        :after (lambda () (wanderlust-hook))
+        ;;        )
+        ))
+
 (el-get 'wait
         (append '(el-get google-maps)
                 (mapcar 'el-get-source-name el-get-sources)))

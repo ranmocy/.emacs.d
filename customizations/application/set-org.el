@@ -3,26 +3,18 @@
 (require 'org-bookmark)
 
 ;; Define custom
-(defcustom my/org-directory "~/"
-  "Customized Org files direcotry."
-  :type 'directory
-  :group 'org)
-(defcustom my/org-gtd-file (expand-file-name "gtd.org" my/org-directory)
-  "GTD file location."
-  :type 'file
-  :group 'org)
-(defcustom my/org-todo-file (expand-file-name "todo.org" my/org-directory)
-  "TODO file location."
-  :type 'file
-  :group 'org)
-(defcustom my/org-journal-file (expand-file-name "journal.org" my/org-directory)
-  "Journal file location."
-  :type 'file
-  :group 'org)
-(defcustom my/org-remember-file (expand-file-name "remember.org" my/org-directory)
-  "Remember file location."
-  :type 'file
-  :group 'org)
+
+(cond
+ ((system-type-unix-like-p)
+  (setq my/org-directory "~/Documents/Org/")
+  )
+ (t
+  (setq my/org-directory nil))
+ )
+(setq my/org-gtd-file (expand-file-name "gtd.org" my/org-directory))
+(setq my/org-todo-file (expand-file-name "todo.org" my/org-directory))
+(setq my/org-journal-file (expand-file-name "journal.org" my/org-directory))
+(setq my/org-remember-file (expand-file-name "remember.org" my/org-directory))
 
 ;; Just open my gtd file.
 (defun gtd ()
@@ -43,10 +35,8 @@
 ;;              ))
 
 ;; agenda-files
-(defvar my/org-gtd-other-files)
-(setf my/org-gtd-other-files (list my/org-todo-file my/org-remember-file))
-(setf org-agenda-files (cons my/org-gtd-file my/org-gtd-other-files))
-
+(setq org-agenda-files (list my/org-gtd-file my/org-todo-file my/org-remember-file))
+ 
 ;; Archive in a separate file
 (setq org-archive-location "%s_archive::")
 
