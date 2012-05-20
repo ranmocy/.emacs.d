@@ -10,6 +10,7 @@
  auto-save-file-name-transforms `(("\\(?:[^/]*/\\)*\\(.*\\)" ,(concat autosave-dir "\\1") t))
  auto-save-interval 300
  auto-save-timeout 3
+ trash-directory (expand-file-name "trash" autosave-dir)
  ;; auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
  ;; auto-save-file-name-transforms `((".*" ,autosave-dir))
  )
