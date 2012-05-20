@@ -1,11 +1,12 @@
 (require 'tabbar)
 
 (tabbar-mode t)
-(global-set-key (kbd "M-[") 'tabbar-backward-tab)
-(global-set-key (kbd "M-]") 'tabbar-forward-tab)
-(global-set-key (kbd "s-[") 'tabbar-backward-group)
-(global-set-key (kbd "s-]") 'tabbar-forward-group)
+(global-set-key (kbd "s-[") 'tabbar-backward-tab)
+(global-set-key (kbd "s-]") 'tabbar-forward-tab)
+(global-set-key (kbd "s-{") 'tabbar-backward-group)
+(global-set-key (kbd "s-}") 'tabbar-forward-group)
 (global-set-key (kbd "s-=") 'tabbar-press-home)
+(global-set-key (kbd "s-<tab>") 'tabbar-forward-group)
 (setq tabbar-help-on-tab-function nil)
 
 ;; 去掉emacs自带的几个buffer
