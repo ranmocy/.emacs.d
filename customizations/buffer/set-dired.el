@@ -1,6 +1,8 @@
+(setq dired-omit-files "^\\...+$")      ; hide hidden files
+(setq diredful-init-file (expand-file-name "diredful-conf.el" (file-name-directory file)))
+
 (require 'dired-details)
 (require 'diredful)
-(setq dired-omit-files "^\\...+$")      ; hide hidden files
 
 (add-hook 'dired-mode-hook
           '(lambda ()
