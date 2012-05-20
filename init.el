@@ -55,7 +55,17 @@
 
 ;;----------server----------
 ;; start a server if there wasn't one
-(unless (fboundp 'daemonp) (server-start))
+(if (and (fboundp 'daemonp) (not (daemonp)))
+    (server-start))
+
+;; start edit-server
+(if (locate-library "edit-server")
+    (progn
+      (require 'edit-server)
+      ;; (unless (daemonp)
+        (setq edit-server-new-frame nil)
+        ;; )
+      (edit-server-start)))
 
 ;;; init.el ends here
 
@@ -74,10 +84,3 @@
       smtpmail-smtp-service 587
       ;; smtpmail-local-domain "yourcompany.com"
       )
-
-(if (locate-library "edit-server")
-    (progn
-      (require 'edit-server)
-      (unless (daemonp)
-        (setq edit-server-new-frame nil))
-      (edit-server-start)))
