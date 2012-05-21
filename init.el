@@ -55,16 +55,18 @@
 
 ;;----------server----------
 ;; start a server if there wasn't one
-(if (and (fboundp 'daemonp) (not (daemonp)))
-    (server-start))
+(when (locate-library "server")
+  (require 'server)
+  (when (not (server-running-p server-name))
+    (when (and (fboundp 'daemonp) (not (daemonp)))
+      (server-start))))
 
 ;; start edit-server
-(if (locate-library "edit-server")
-    (progn
-      (require 'edit-server)
-      ;; (unless (daemonp)
-        (setq edit-server-new-frame nil)
-        ;; )
-      (edit-server-start)))
+(when (locate-library "edit-server")
+  (require 'edit-server)
+  ;; (unless (daemonp)
+  ;;   (setq edit-server-new-frame nil)
+  ;;   )
+  (edit-server-start))
 
 ;;; init.el ends here
