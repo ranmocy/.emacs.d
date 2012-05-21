@@ -12,22 +12,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(irc-password "YourPassword")
  '(user-full-name "Your Name")
- '(user-mail-address "you@email.com")
-
- '(diary-file "~/.emacs.d/.diary")
- '(bookmark-default-file "~/.emacs.d/.bookmarks")
-
- '(my/org-directory "~/")
- '(my/org-gtd-file (expand-file-name "gtd.org" my-org-directory))
- '(my/org-todo-file (expand-file-name "todo.org" my-org-directory))
- '(my/org-journal-file (expand-file-name "journal.org" my-org-directory))
- '(my/org-remember-file (expand-file-name "remember.org" my-org-directory))
- '(org-agenda-files '(my/org-gtd-file my/org-todo-file my/org-remember-file) t)
-
- '(irc-password "irc-password")
-
- '(ibus-python-shell-command-name "python2")
+ '(user-mail-address "your@email.com")
+ '(user-email-username "YourUsername")
  )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -35,3 +23,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(provide 'customize)

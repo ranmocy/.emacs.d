@@ -60,21 +60,22 @@
       '(type (5 date) " " (14 from) " " t (0 subj)))
 (setq mew-summary-form-extract-rule '(name))
 
-;;
-;;用w3m来读html格式邮件
-;; 
-(setq mew-mime-multipart-alternative-list '("Text/Html" "Text/Plain" "*."))
-(condition-case nil
-    (require 'mew-w3m)
-  (file-error nil))
-
-(setq mew-use-text/html t)
-
 ;; Password
 (setq mew-use-master-passwd t)
 
 ;;(setq mew-ssl-verify-level 0)
 (setq mew-prog-ssl "/usr/local/bin/stunnel")
+
+;; HTML support
+(setq mew-mime-multipart-alternative-list '("Text/Html" "Text/Plain" "*."))
+(condition-case nil
+    (require 'mew-w3m)
+  (file-error nil))
+(setq mew-use-text/html t)
+
+(defcustom user-email-username nil
+  "Username for email"
+  )
 
 ;; setup mail
 (setq mew-config-alist
@@ -85,9 +86,9 @@
           (prog-ssl              "/usr/local/bin/stunnel")
           (imap-server           "imap.gmail.com")
           (imap-ssl-port         "993")
-          (imap-user             "ranmocy@gmail.com")
-          (name                  "Ranmocy Sheng")
-          (user                  "ranmocy")
+          (imap-user             user-mail-address)
+          (name                  user-full-name)
+          (user                  user-email-username)
           (mail-domain           "gmail.com")
           (imap-ssl              t)
           (imap-size             0)
@@ -97,7 +98,7 @@
           ;; This must be in concile with your IMAP box setup
           (smtp-ssl              t)
           (smtp-auth-list        ("PLAIN" "LOGIN" "CRAM-MD5"))
-          (smtp-user             "ranmocy@gmail.com")
+          (smtp-user             user-mail-address)
           (smtp-server           "smtp.gmail.com")
           (smtp-ssl-port         "465")
           )))

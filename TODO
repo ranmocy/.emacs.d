@@ -7,7 +7,8 @@
 CLOSED: [2012-05-20 Sun 16:47]
 * TODO auto-complete
 * TODO header2
-* TODO Gmail support
+* DONE Gmail support
+CLOSED: [2012-05-21 Mon 16:39]
 ** mew
 ** rmail
 ** gnu
@@ -22,10 +23,10 @@ CLOSED: [2012-05-20 Sun 16:47]
 Every single feature should centralized into a single file.
 ** seperate hook into other files
 ** add to packages list from other files
-* TODO custom file
+* DONE custom file
+CLOSED: [2012-05-21 Mon 16:39]
 ** move out unless it truelly sensitive.
 * MAYBE Some Ideas
-CLOSED: [2012-05-20 Sun 17:04]
 ** tabbar groups by projects
 Judge with function is-rails-project-p and name with root directory name.
 
