@@ -1,6 +1,11 @@
-(require 'tabbar)
+(add-to-el-get-sources
+ '(:name tabbar
+         :type git
+         :url "git://github.com/dholm/tabbar.git"
+         :load "tabbar"))
 
 (tabbar-mode t)
+
 (global-set-key (kbd "s-[") 'tabbar-backward-tab)
 (global-set-key (kbd "s-]") 'tabbar-forward-tab)
 (global-set-key (kbd "s-{") 'tabbar-backward-group)
