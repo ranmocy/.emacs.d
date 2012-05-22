@@ -1,7 +1,7 @@
 ;;; set-auto-header.el
 ;; 自动添加文件头
 
-(require 'auto-header)
+(require 'header2)
 (setq header-full-name "Ranmocy")               ; 设置文件头中的姓名
 (setq header-email-address "ranmocy@gmail.com") ; 设置邮箱
 

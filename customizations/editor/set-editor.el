@@ -1,10 +1,14 @@
 (require 'set-auto-save)
 (require 'set-auto-backup)
+(require 'set-auto-header)
 (require 'set-mac-modifier)
 (require 'set-ibus)
 (require 'set-ispell)
 (require 'set-search)
 (require 'set-paredit)
+(require 'set-hippie-expand)
+(require 'set-yasnippet)
+(require 'set-textmate)
 
 (setq
  kill-ring-max 1024           ;用一个很大的kill ring这样防止不小心删掉重要的东西
@@ -30,26 +34,5 @@
  suggest-key-bindings 1                 ; 当使用 M-x COMMAND 后，过 1 秒钟显示该 COMMAND 绑定的键
  x-select-enable-clipboard t            ; 支持emacs和外部程序的粘贴
  )
-
-(defun yasnippet-hook ()
-  (autoload 'yas/global-mode "yasnippet" nil t)
-  (setq yas/root-directory (expand-file-name "snippets" user-emacs-directory))
-  (yas/global-mode 1)
-  (yas/load-directory yas/root-directory)
-  (yas/load-directory (expand-file-name "snippets" (file-name-directory (locate-library "yasnippet"))))
-  (yas/load-directory (expand-file-name "extras/imported" (file-name-directory (locate-library "yasnippet"))))
-  (global-set-key [backtab] `yas/expand)
-  )
-
-(add-to-el-get-sources
- '(:name yasnippet
-         :type git
-         :url "git://github.com/capitaomorte/yasnippet.git"
-         :after (lambda () (yasnippet-hook))))
-(add-to-el-get-sources
- '(:name textmate
-         :type git
-         :url "git://github.com/defunkt/textmate.el"
-         :load "textmate.el"))
 
 (provide 'set-editor)
