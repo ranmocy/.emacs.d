@@ -3,5 +3,6 @@
          :type git
          :url "git://github.com/defunkt/textmate.el"
          :load "textmate.el"))
+(textmate-mode)
 
 (provide 'set-textmate)

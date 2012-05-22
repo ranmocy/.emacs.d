@@ -15,4 +15,4 @@
           (message "markdown-cycle should be called")
           (markdown-cycle))))))
 
-(provide 'set-markdown)
+(provide 'set-markdown-mode)

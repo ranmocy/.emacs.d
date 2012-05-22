@@ -14,15 +14,15 @@
 ;; Basically it can adapt MacOS and any distribution of GNU/Linux.
 
 ;;----------Path----------
-(add-to-list 'exec-path "/usr/local/bin")
-
 (setq personal-path (expand-file-name "personal/" user-emacs-directory)) ; Personal files path
+(setq custom-file (expand-file-name "customize.el" personal-path)) ; Emacs default customization file
 (setq custom-load-path (expand-file-name "customizations/" user-emacs-directory)) ; Customization files path
-(setq custom-file (expand-file-name "customize.el" user-emacs-directory)) ; Emacs default customization file
 (setq plugin-load-path (expand-file-name "plugins/" user-emacs-directory)) ; Third-party packages path
 (setq custom-theme-load-path (list (expand-file-name "themes/" user-emacs-directory) t)) ; t for Emacs 24 default themes
 
-(normal-top-level-add-to-load-path (list user-emacs-directory))
+(add-to-list 'exec-path "/usr/local/bin")
+
+(add-to-list 'load-path personal-path)
 
 ;; add custom path and its subdirs to load-path
 (let ((default-directory custom-load-path))
@@ -43,8 +43,6 @@
 (unless (require 'el-get nil t)
   (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
                 (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
-
-(setq el-get-sources '())
 
 ;;----------custom-setting---------
 (require 'customize)

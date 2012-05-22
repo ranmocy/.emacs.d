@@ -6,9 +6,10 @@
 (require 'set-css-mode)
 (require 'set-sass-mode)
 (require 'set-cucumber)
-(add-to-el-get-sources
- '(:name rinari
-         :type elpa))
+;; (add-to-el-get-sources
+;;  '(:name rinari
+;;          :type git
+;;          :url "git://github.com/eschulte/rinari.git"))
 
 ;; helper-function
 (defun is-rails-project ()

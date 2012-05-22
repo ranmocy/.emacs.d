@@ -5,4 +5,4 @@
  eval-expression-print-level nil        ;设置执行表达式的深度没有限制
  )
 
-(provide 'set-lisp)
+(provide 'set-lisp-mode)

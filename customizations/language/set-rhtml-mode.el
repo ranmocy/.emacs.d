@@ -10,4 +10,4 @@
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
   (add-to-list 'auto-mode-alist '("\\.rjs\\'" . rhtml-mode)))
 
-(provide 'set-rhtml)
+(provide 'set-rhtml-mode)
