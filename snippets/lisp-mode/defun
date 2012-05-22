@@ -1,6 +1,0 @@
-#name : (defun...)
-#group : definitions
-# --
-(defun ${1:method} (${2:variable})
-$0
-)
