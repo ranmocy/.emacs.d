@@ -1,6 +1,6 @@
 ;;--------------------Twitter--------------------
 (autoload 'twittering-mode "twittering-mode" nil t)
-;;(require 'twittering-mode)
+
 (setq twittering-use-master-password t)
 (setq twittering-icon-mode t)           ; Show icons
 (setq twittering-timer-interval 30)     ; Update your timeline each 30 seconds
@@ -16,8 +16,8 @@
 
 (setq twittering-initial-timeline-spec-string
       '(":home"
-        ":replies"
-        ;; ":mentions"
+        ":mentions"
+        ;; ":replies"
         ;; "ranmocy"
         ;; ":favorites"
         ;; ":direct_messages"

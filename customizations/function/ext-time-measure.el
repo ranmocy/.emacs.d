@@ -11,4 +11,4 @@
   (time-interval *last-record* (current-time))
   (setq *last-record-load-time* (current-time)))
 
-(provide 'set-time-measure)
+(provide 'ext-time-measure)

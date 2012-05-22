@@ -19,7 +19,7 @@
  calendar-latitude +31.024994
  calendar-longitude +121.431607
 
- diary-file "~/.emacs.d/.diary"
+ diary-file (expand-file-name "diary" personal-path)
  )
 
 (provide 'set-calendar)

@@ -15,7 +15,9 @@
 
 ;;----------Path----------
 (add-to-list 'exec-path "/usr/local/bin")
-(setq custom-load-path (expand-file-name "customizations/" user-emacs-directory)) ; customization files
+
+(setq personal-path (expand-file-name "personal/" user-emacs-directory)) ; Personal files path
+(setq custom-load-path (expand-file-name "customizations/" user-emacs-directory)) ; Customization files path
 (setq custom-file (expand-file-name "customize.el" user-emacs-directory)) ; Emacs default customization file
 (setq plugin-load-path (expand-file-name "plugins/" user-emacs-directory)) ; Third-party packages path
 (setq custom-theme-load-path (list (expand-file-name "themes/" user-emacs-directory) t)) ; t for Emacs 24 default themes
@@ -37,10 +39,12 @@
 (setq package-archives (cons '("tromey" . "http://tromey.com/elpa/") package-archives))
 (package-initialize)
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(add-to-list 'load-path (expand-file-name "el-get/el-get" user-emacs-directory))
 (unless (require 'el-get nil t)
   (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
                 (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
+
+(setq el-get-sources '())
 
 ;;----------custom-setting---------
 (require 'customize)
@@ -51,7 +55,10 @@
 (require 'set-language)
 (require 'set-ui)
 (require 'set-application)
-(require 'set-package)
+
+(el-get 'sync
+        (append '(el-get google-maps)
+                (mapcar 'el-get-source-name el-get-sources)))
 
 ;;----------server----------
 ;; start a server if there wasn't one

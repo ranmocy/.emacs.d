@@ -1,6 +1,7 @@
-(require 'set-system-type)
-(require 'set-window-system)
-(require 'set-time-measure)
-(require 'set-compile)
+(require 'ext-system-type)
+(require 'ext-window-system)
+(require 'ext-time-measure)
+(require 'ext-compile)
+(require 'ext-el-get)
 
 (provide 'set-function)

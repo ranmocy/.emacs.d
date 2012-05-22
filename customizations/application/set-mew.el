@@ -56,9 +56,14 @@
       '(mew-refile-guess-by-folder
         mew-refile-guess-by-alist))
 
+;; Summary form
 (setq mew-summary-form
-      '(type (5 date) " " (14 from) " " t (0 subj)))
-(setq mew-summary-form-extract-rule '(name))
+      '(type " " (5 date) " " (20 from) " " t (20 subj)))
+(setq mew-summary-form-extract-rule '(name " " addr))
+(setq mew-summary-reply-with-citation-position 'body) ; body or end
+
+;; Spam
+(setq mew-summary-form-mark-spam t)
 
 ;; Password
 (setq mew-use-master-passwd t)
@@ -73,22 +78,22 @@
   (file-error nil))
 (setq mew-use-text/html t)
 
-(defcustom user-email-username nil
+(defcustom user-mail-username nil
   "Username for email"
   )
 
 ;; setup mail
 (setq mew-config-alist
-      '(
+      `(
         (default
           (mailbox-type          imap)
           (proto                 "%")
           (prog-ssl              "/usr/local/bin/stunnel")
           (imap-server           "imap.gmail.com")
           (imap-ssl-port         "993")
-          (imap-user             user-mail-address)
-          (name                  user-full-name)
-          (user                  user-email-username)
+          (imap-user             ,user-mail-address)
+          (name                  ,user-full-name)
+          (user                  ,user-mail-username)
           (mail-domain           "gmail.com")
           (imap-ssl              t)
           (imap-size             0)
@@ -98,7 +103,7 @@
           ;; This must be in concile with your IMAP box setup
           (smtp-ssl              t)
           (smtp-auth-list        ("PLAIN" "LOGIN" "CRAM-MD5"))
-          (smtp-user             user-mail-address)
+          (smtp-user             ,user-mail-address)
           (smtp-server           "smtp.gmail.com")
           (smtp-ssl-port         "465")
           )))

@@ -31,4 +31,25 @@
  x-select-enable-clipboard t            ; 支持emacs和外部程序的粘贴
  )
 
+(defun yasnippet-hook ()
+  (autoload 'yas/global-mode "yasnippet" nil t)
+  (setq yas/root-directory (expand-file-name "snippets" user-emacs-directory))
+  (yas/global-mode 1)
+  (yas/load-directory yas/root-directory)
+  (yas/load-directory (expand-file-name "snippets" (file-name-directory (locate-library "yasnippet"))))
+  (yas/load-directory (expand-file-name "extras/imported" (file-name-directory (locate-library "yasnippet"))))
+  (global-set-key [backtab] `yas/expand)
+  )
+
+(add-to-el-get-sources
+ '(:name yasnippet
+         :type git
+         :url "git://github.com/capitaomorte/yasnippet.git"
+         :after (lambda () (yasnippet-hook))))
+(add-to-el-get-sources
+ '(:name textmate
+         :type git
+         :url "git://github.com/defunkt/textmate.el"
+         :load "textmate.el"))
+
 (provide 'set-editor)

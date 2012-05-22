@@ -13,4 +13,4 @@
    (eq window-system 'w32)
    ))
 
-(provide 'set-window-system)
+(provide 'ext-window-system)

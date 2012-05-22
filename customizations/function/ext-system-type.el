@@ -25,4 +25,4 @@
   (or (system-type-linux-p) (system-type-darwin-p))
   )
 
-(provide 'set-system-type)
+(provide 'ext-system-type)
