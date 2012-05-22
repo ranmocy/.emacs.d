@@ -1,6 +1,7 @@
 (add-to-el-get-sources
  '(:name lua-mode
          :type elpa
-         :load "lua-mode.el"))
+         :after (lambda ()
+                  (autoload 'lua-mode "lua-mode.el" nil t))))
 
 (provide 'set-lua-mode)

@@ -2,9 +2,8 @@
  '(:name tabbar
          :type git
          :url "git://github.com/dholm/tabbar.git"
-         :load "tabbar"))
-
-(tabbar-mode t)
+         :load "tabbar"
+	 :after (lambda () (tabbar-mode t))))
 
 (global-set-key (kbd "s-[") 'tabbar-backward-tab)
 (global-set-key (kbd "s-]") 'tabbar-forward-tab)

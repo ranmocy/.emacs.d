@@ -2,7 +2,7 @@
  '(:name textmate
          :type git
          :url "git://github.com/defunkt/textmate.el"
-         :load "textmate.el"))
-(textmate-mode)
+         :load "textmate.el"
+	 :after (lambda () (textmate-mode))))
 
 (provide 'set-textmate)

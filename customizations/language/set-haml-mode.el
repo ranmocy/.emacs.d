@@ -1,6 +1,7 @@
 (add-to-el-get-sources
  '(:name haml-mode
          :type elpa
-         :load "haml-mode.el"))
+         :after (lambda ()
+                  (autoload 'haml-mode "haml-mode" nil t ))))
 
 (provide 'set-haml-mode)

@@ -1,8 +1,8 @@
-(require 'set-markdown-mode)
 (require 'set-lisp-mode)
 (require 'set-lua-mode)
-(require 'set-rails)
+(require 'set-markdown-mode)
 (require 'set-auctex)
+(require 'set-rails)
 (require 'set-zsh)
 
 (setq

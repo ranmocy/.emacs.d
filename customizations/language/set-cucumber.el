@@ -2,11 +2,8 @@
  '(:name cucumber
          :type git
          :url "git://github.com/michaelklishin/cucumber.el.git"
-         :load "feature-mode.el"
-         :after (lambda () (feature-mode-hook))))
-
-(defun feature-mode-hook ()
-  (autoload 'feature-mode "feature-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode)))
+         :after (lambda ()
+                  (autoload 'feature-mode "feature-mode" nil t)
+                  (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode)))))
 
 (provide 'set-cucumber)
