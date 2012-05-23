@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : render :layout => " ... "
+# --
+render :layout => "${layoutname}"

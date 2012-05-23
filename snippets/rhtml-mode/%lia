@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : <%= link_to " ... ", :action => " ... " %>
+# --
+<%= link_to "${title}", :action => "${index}" %>$0

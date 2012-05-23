@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : assert_kind_of  ... ,  ... 
+# --
+assert_kind_of ${class}, ${object}
