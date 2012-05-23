@@ -1,33 +1,31 @@
-;;; set-auto-header.el
-;; 自动添加文件头
+;;; set-auto-header.el --- Setup auto inster header
 
-(require 'header2)
-(setq header-full-name "Ranmocy")               ; 设置文件头中的姓名
-(setq header-email-address "ranmocy@gmail.com") ; 设置邮箱
+;; Copyright (C) 2012  Ranmocy Sheng
 
-;; 设置每次保存时要更新的项目
-(setq header-update-on-save
-      '(filename
-        modified
-        counter
-        copyright))
+;; Author: Ranmocy Sheng(require 'header2) <ranmocy@gmail.com>
+;; Keywords: extensions, lisp
 
-;; 设置文件头的显示格式
-(setq header-field-list
-      '(filename                        ;文件名
-        blank                           ;空行，下同
-        copyright
-        version
-        author
-        created
-        blank
-        description
-        ;;blank
-        ;;modified_by
-        ;; blank
-        ;;status
-        ;;更新
-        ;;blank
-        ))
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Setup auto insert header.
+
+;;; Code:
+
+(setq auto-insert-directory (expand-file-name "auto-insert/" user-emacs-directory))
+(auto-insert-mode)
 
 (provide 'set-auto-header)
+;;; set-auto-header.el ends here

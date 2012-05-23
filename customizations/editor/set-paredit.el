@@ -1,8 +1,13 @@
-(autoload 'paredit-mode "paredit"
-  "Minor mode for pseudo-structurally editing Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
-(add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
-(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-(add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
+(add-to-el-get-sources
+ '(:name paredit
+         :type git
+         :url "git://github.com/emacsmirror/paredit.git"
+         :after (lambda ()
+                  (autoload 'paredit-mode "paredit"
+                    "Minor mode for pseudo-structurally editing Lisp code." t)
+                  (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
+                  (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
+                  (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
+                  (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1))))))
 
 (provide 'set-paredit)

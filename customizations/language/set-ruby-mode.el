@@ -12,22 +12,27 @@
                   (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
                   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))))
  '(:name inf-ruby
-         :type elpa)
+         :type elpa
+         :autoloads nil)
  '(:name ruby-compilation
-         :type elpa)
+         :type elpa
+         :autoloads nil)
  '(:name rvm
          :type git
+         :autoloads nil
          :url "http://github.com/djwhitt/rvm.el.git")
  '(:name ruby-electric
          :type git
-         :url "git://github.com/qoobaa/ruby-electric.git"))
+         :url "git://github.com/qoobaa/ruby-electric.git"
+         :autoloads nil)
+ )
 
 (eval-after-load "ruby-mode"
   '(progn
-     (require 'inf-ruby)
-     (require 'ruby-compilation)
-     (require 'ruby-electric)
-     (require 'rvm)
+     ;; (require 'inf-ruby)
+     ;; (require 'ruby-compilation)
+     ;; (require 'ruby-electric)
+     ;; (require 'rvm)
      (add-hook 'ruby-mode-hook
                '(lambda ()
                   (setq ruby-deep-arglist t)

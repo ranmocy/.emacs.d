@@ -1,8 +1,9 @@
-(add-to-el-get-sources
- '(:name auctex
-         :elpa
-         :after (lambda ()
-                  (autoload 'latex-mode "tex-site" nil t))))
+;; (add-to-el-get-sources
+;;  '(:name auctex
+;;          :git
+;;          :url "git://github.com/emacsmirror/auctex.git"
+;;          :after (lambda ()
+;;                   (autoload 'latex-mode "tex-site" nil t))))
 
 (eval-after-load "tex-site"
   '(progn

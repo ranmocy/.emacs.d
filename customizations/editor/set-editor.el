@@ -1,5 +1,6 @@
 (require 'set-auto-save)
 (require 'set-auto-backup)
+(require 'set-auto-complete)
 (require 'set-auto-header)
 (require 'set-mac-modifier)
 (require 'set-ibus)

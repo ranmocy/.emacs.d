@@ -54,10 +54,6 @@
 (require 'set-ui)
 (require 'set-application)
 
-(el-get 'sync
-        (append '(el-get google-maps)
-                (mapcar 'el-get-source-name el-get-sources)))
-
 ;;----------server----------
 ;; start a server if there wasn't one
 (when (locate-library "server")
@@ -66,12 +62,9 @@
     (when (and (fboundp 'daemonp) (not (daemonp)))
       (server-start))))
 
-;; start edit-server
-(when (locate-library "edit-server")
-  (require 'edit-server)
-  ;; (unless (daemonp)
-  ;;   (setq edit-server-new-frame nil)
-  ;;   )
-  (edit-server-start))
+;;----------el-get-sync----------
+(el-get 'sync
+        (append '(el-get google-maps)
+                (mapcar 'el-get-source-name el-get-sources)))
 
 ;;; init.el ends here
