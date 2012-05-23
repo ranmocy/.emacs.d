@@ -1,9 +1,9 @@
-;;; set-auto-header.el --- Setup auto inster header
+;;; set-auto-header.el --- Setup auto header
 
 ;; Copyright (C) 2012  Ranmocy Sheng
 
-;; Author: Ranmocy Sheng(require 'header2) <ranmocy@gmail.com>
-;; Keywords: extensions, lisp
+;; Author: Ranmocy Sheng <ranmocy@gmail.com>
+;; Keywords: lisp
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,12 +20,13 @@
 
 ;;; Commentary:
 
-;; Setup auto insert header.
+;; auto-insert-directory should just under user-emacs-directory
 
 ;;; Code:
 
 (setq auto-insert-directory (expand-file-name "auto-insert/" user-emacs-directory))
-(auto-insert-mode)
+(add-hook 'find-file-hook 'auto-insert)
+(auto-insert-mode 1)
 
 (provide 'set-auto-header)
 ;;; set-auto-header.el ends here
