@@ -1,9 +1,9 @@
 (add-to-el-get-sources
  '(:name twittering-mode
          :type git
-         :url "git://github.com/hayamiz/twittering-mode.git"))
-
-(autoload 'twittering-mode "twittering-mode" nil t)
+         :url "git://github.com/hayamiz/twittering-mode.git"
+         :after (lambda ()
+                  (autoload 'twittering-mode "twittering-mode" nil t))))
 
 (eval-after-load "twittering-mode"
   (progn
