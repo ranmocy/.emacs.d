@@ -36,4 +36,9 @@
  x-select-enable-clipboard t            ; 支持emacs和外部程序的粘贴
  )
 
+;; whenever an external process changes a file underneath emacs, and there
+;; was no unsaved changes in the corresponding buffer, just revert its
+;; content to reflect what's on-disk.
+(global-auto-revert-mode 1)
+
 (provide 'set-editor)

@@ -31,6 +31,7 @@
 (require 'set-irc)
 (require 'set-mew)
 (require 'set-edit-server)
+(require 'set-term)
 
 (provide 'set-application)
 ;;; set-application.el ends here
