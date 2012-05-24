@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Emacs config by ranmocy</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Emacs config</h1>
+        <h2>for Emacs 24</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/ranmocy/emacs_config/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/ranmocy/emacs_config/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/ranmocy/emacs_config" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>Ranmocy Emacs Configurations</h1>
+
+<p>Emacs-Lisp is a very powerful language used by Emacs.
+It is so powerful that sometimes makes people confused.</p>
+
+<p>This project just aims to set some little rules to make the custom files a little bit more clearly.</p>
+
+<h2>Philosophy</h2>
+
+<ul>
+<li>Hierarchy</li>
+<li>Modularization</li>
+<li>Decoupling</li>
+</ul><h2>File Rules</h2>
+
+<ul>
+<li>Every file here should be packaged to <code>provide</code> a feature and be <code>require</code> by others.</li>
+<li>A file provide a feature to setup a package should be named with prefix <code>set-</code>.</li>
+<li>A file provide a feature to extend a package should be named with prefix <code>ext-</code>.</li>
+</ul><h2>Path Rules</h2>
+
+<ul>
+<li>Every customized files are under <code>customize/</code>, separated into different directory by categorization.</li>
+<li>Packages are managed by <code>el-get</code> under <code>el-get/</code> unitedly.</li>
+<li>Third-parties packages out of the <code>el-get</code> will be placed under <code>plugins/</code>. Never modified directly.</li>
+<li>Themes are under <code>themes/</code> used by Emacs 24 integrated themes management.</li>
+<li>Snippets are under <code>snippets/</code> used by <code>yasnippet</code>.</li>
+<li>Everything sensitive is under <code>personal/</code>.</li>
+</ul><h2>Code Rules</h2>
+
+<ul>
+<li>Atomize.</li>
+<li>Auto-load every single file.</li>
+<li>Duck Typing. Detect before use. Disable with a message better than raise errors with interruption.</li>
+<li>It should be able to adapt Mac OS and any distribution of GNU/Linux without modification.</li>
+</ul><h2>Contribute or Advise</h2>
+
+<pre><code>Clone &amp;&amp; Modify &amp;&amp; Push &amp;&amp; Pull-request \n
+</code></pre>
+
+<p>or</p>
+
+<pre><code>Tell( to: me, in: ways.any )
+</code></pre>
+
+<p>EMACS is a Evil Mixed A Configuration of S-expression</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
