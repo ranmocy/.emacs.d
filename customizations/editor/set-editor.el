@@ -10,6 +10,7 @@
 (require 'set-hippie-expand)
 (require 'set-yasnippet)
 (require 'set-textmate)
+(require 'set-ido)
 
 (setq
  kill-ring-max 1024           ;用一个很大的kill ring这样防止不小心删掉重要的东西
@@ -25,7 +26,6 @@
 ;; (set-input-method 'chinese-py)
 ;; (toggle-input-method)
 
-(ido-mode 't)                           ; 匹配选择模式
 (fset 'yes-or-no-p 'y-or-n-p)           ; 以 y/n代表 yes/no
 ;; (auto-compression-mode 1)               ;打开压缩文件时自动解压缩
 (setq
