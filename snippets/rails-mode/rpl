@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : render :partial => " ... ", :locals => { : ...  => " ... "}
+# --
+render :partial => "${item}", :locals => { :${name} => "${value}"}

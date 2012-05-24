@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : render :file => " ... ", :use_full_path =>  ... 
+# --
+render :file => "${filepath}", :use_full_path => ${false}

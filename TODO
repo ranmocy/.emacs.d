@@ -1,0 +1,50 @@
+# -*- mode: org -*-
+#+TITLE:     TODO
+#+CATEGORY:  emacs
+
+* Bugs
+** ibus package
+** auto header
+** Org-mode
+*** short cut conflict [[bookmark:emacs-todo-org-mode][set-org.el]].
+*** for some reasons unknown, `TAB` will lost funcion sometime.
+* Refactory
+** DONE trans mode-hook to eval-after-load + progn
+OSED: [2012-05-23 Wed 03:51]
+State "DONE"       from ""           [2012-05-23 Wed 03:51]
+** DONE plugins to el-get
+OSED: [2012-05-23 Wed 13:38]
+State "DONE"       from "NEXT"       [2012-05-23 Wed 13:38]
+State "NEXT"       from ""           [2012-05-23 Wed 03:51]
+
+** DONE move hook to other files
+CLOSED: [2012-05-23 Wed 01:25]
+- State "DONE"       from ""           [2012-05-23 Wed 01:25]
+** DONE move out unless it truelly sensitive.
+CLOSED: [2012-05-24 Thu 01:05]
+- State "DONE"       from ""           [2012-05-24 Thu 01:05]
+* DOING auto-header
+- State "DOING"      from "CANCELLED"  [2012-05-24 Thu 01:02]
+* DONE tabbar
+CLOSED: [2012-05-20 Sun 16:47]
+* DONE auto complete
+OSED: [2012-05-24 Thu 00:49]
+State "DONE"       from ""           [2012-05-24 Thu 00:49]
+* DONE Gmail support
+CLOSED: [2012-05-21 Mon 16:39]
+** DONE mew
+CLOSED: [2012-05-24 Thu 11:47]
+- State "DONE"       from ""           [2012-05-24 Thu 11:47]
+** rmail
+** gnu
+* TODO rails support
+** rinari
+* TODO LaTeX support
+** auctex configs
+* Some Ideas
+** tabbar groups by projects
+Judge with function is-rails-project-p and name with root directory name.
+
+** rails snippets
+** find file
+http://emacswiki.org/emacs/TextMate

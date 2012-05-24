@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : render_component :controller => " ... "
+# --
+render_component :controller => "${items}"

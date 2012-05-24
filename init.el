@@ -1,34 +1,70 @@
-;;====================init====================
-;;----------define----------
-;; (defvar *last-record-load-time* (current-time))
-(setq emacs-path "~/.emacs.d/")
-(setq plugin-path (concat emacs-path "plugins/"))
-(setq theme-path (concat emacs-path "themes/"))
-(setq custom-path (concat emacs-path "customize/"))
-(setq custom-file (concat custom-path "set_custom.el"))
-;; (setenv "OLDPATH" (getenv "PATH"))
-;; (setenv "PATH" (concat "/usr/local/bin:" (getenv "OLDPATH")))
-(add-to-list 'exec-path "/usr/local/bin/")
-(add-to-list 'load-path plugin-path)
-(add-to-list 'custom-theme-load-path theme-path)
-(add-to-list 'custom-theme-load-path "themes/solarized-theme")
-(load (concat emacs-path "personal-information.el"))
+;;; init.el
+;; Ranmocy's Emacs Configurations -- A well-organized configurations.
+
+;; Copyright (C) 2009, 2010, 2011, 2012
+;; Author:   Ranmocy <Ranmocy@gmail.com>
+;; Created:  someday in 2009
+;; Updated:  2012-04-26
+;; Version:  0.9.1-p0
+;; Keywords: emacs, xemacs, macos, linux, nowindows
+;; Github:  `https://github.com/ranmocy/emacs_config'
+;; GitCafe: `http://gitcafe.com/ranmocy/emacs_config'
+
+;; Every file here should be packaged to `provide' a feature and be `require' by others.
+;; Basically it can adapt MacOS and any distribution of GNU/Linux.
+
+;;----------Path----------
+(setq personal-path (expand-file-name "personal/" user-emacs-directory)) ; Personal files path
+(setq custom-file (expand-file-name "customize.el" personal-path)) ; Emacs default customization file
+(setq custom-load-path (expand-file-name "customizations/" user-emacs-directory)) ; Customization files path
+(setq plugin-load-path (expand-file-name "plugins/" user-emacs-directory)) ; Third-party packages path
+(setq custom-theme-load-path (list (expand-file-name "themes/" user-emacs-directory) t)) ; t for Emacs 24 default themes
+
+(add-to-list 'exec-path "/usr/local/bin")
+
+(add-to-list 'load-path personal-path)
+
+;; add custom path and its subdirs to load-path
+(let ((default-directory custom-load-path))
+  (normal-top-level-add-to-load-path '("."))
+  (normal-top-level-add-subdirs-to-load-path))
+
+;; add plugin path and its subdirs to load-path
+(let ((default-directory plugin-load-path))
+  (normal-top-level-add-to-load-path '("."))
+  (normal-top-level-add-subdirs-to-load-path))
+
+;;----------el-get----------
+(require 'package)
+(setq package-archives (cons '("tromey" . "http://tromey.com/elpa/") package-archives))
+(package-initialize)
+
+(add-to-list 'load-path (expand-file-name "el-get/el-get" user-emacs-directory))
+(unless (require 'el-get nil t)
+  (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+                (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
 
 ;;----------custom-setting---------
-(load (concat custom-path "set_functions"))
-(load (concat custom-path "set_environment"))
-(load (concat custom-path "set_custom"))
-(load (concat custom-path "set_editor"))
-(load (concat custom-path "set_buffer"))
-(load (concat custom-path "set_language"))
-(load (concat custom-path "set_ui"))
-(load (concat custom-path "set_x"))
-(load (concat custom-path "set_org"))
-(load (concat custom-path "set_application"))
-
-(load (concat custom-path "set_hook"))
-(load (concat custom-path "set_package"))
+(require 'customize)
+(require 'set-function)
+(require 'set-environment)
+(require 'set-editor)
+(require 'set-buffer)
+(require 'set-language)
+(require 'set-ui)
+(require 'set-application)
 
 ;;----------server----------
-(unless (fboundp 'daemonp) (server-start))
+;; start a server if there wasn't one
+(when (locate-library "server")
+  (require 'server)
+  (when (not (server-running-p server-name))
+    (when (and (fboundp 'daemonp) (not (daemonp)))
+      (server-start))))
 
+;;----------el-get-sync----------
+(el-get 'sync
+        (append '(el-get google-maps)
+                (mapcar 'el-get-source-name el-get-sources)))
+
+;;; init.el ends here

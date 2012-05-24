@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : <%=h  ...  %>
+# --
+<%=h ${@item} %>
