@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2012  Ranmocy Sheng
 
-;; Author: Ranmocy Sheng(require 'set-bookmark) <ranmocy@gmail.com>
+;; Author: Ranmocy Sheng <ranmocy@gmail.com>
 ;; Keywords: internal, extensions
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -24,6 +24,7 @@
 
 ;;; Code:
 
+(require 'set-bookmark)
 (require 'set-calendar)
 (require 'set-org)
 (require 'set-todo)
