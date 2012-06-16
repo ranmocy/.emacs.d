@@ -68,3 +68,5 @@
                 (mapcar 'el-get-source-name el-get-sources)))
 
 ;;; init.el ends here
+(global-set-key (kbd "C-s-SPC") 'just-one-space)
+(add-to-list 'exec-path (expand-file-name "el-get/mew/bin/" user-emacs-directory))

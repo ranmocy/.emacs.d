@@ -35,3 +35,9 @@
 
 (provide 'set-mac-modifier)
 ;;; set-mac-modifier.el ends here
+;; (setq mac-command-modifier 'control)
+;; (setq mac-option-modifier 'meta)
+;; (setq mac-control-modifier 'super)
+;; (setq mac-function-modifier 'function)
+;; (setq mac-right-option-modifier nil)
+;; (setq mac-allow-anti-aliasing t)

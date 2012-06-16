@@ -22,17 +22,14 @@
   (interactive)
   (find-file my/org-gtd-file))
 (global-set-key "\C-cg" 'gtd)
+(global-set-key (kbd "C-c a") 'org-agenda)
 
-;; TODO
-;; (add-hook 'org-mode-hook
-;;           '(lambda ()
-;;              (define-prefix-command 'org-mode-map)
-;;              (local-set-key (kbd "C-`") 'org-mode-map)
-;;              (define-key 'org-mode-map "a" 'org-agenda)
-;;              (define-key 'org-mode-map "b" 'org-iswitchb)
-;;              (define-key 'org-mode-map "r" 'org-remember)
-;;              (define-key 'org-mode-map "l" 'org-store-link)
-;;              ))
+(define-prefix-command 'launcher-map)
+(global-set-key (kbd "C-`") 'launcher-map)
+(define-key launcher-map "a" 'org-agenda)
+(define-key launcher-map "r" 'org-remember)
+;; (define-key launcher-map "b" 'org-iswitchb)
+;; (define-key launcher-map "l" 'org-store-link)
 
 ;; agenda-files
 (setq org-agenda-files (list my/org-gtd-file my/org-todo-file my/org-remember-file))

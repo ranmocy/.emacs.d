@@ -24,6 +24,10 @@
 
 ;;; Code:
 
+(defun paredit-mode-hook ()
+  (paredit-mode +1)
+  (local-set-key (kbd "C-h") 'paredit-backward-delete))
+
 (add-to-el-get-sources
  '(:name paredit
          :type git
@@ -31,10 +35,11 @@
          :after (lambda ()
                   (autoload 'paredit-mode "paredit"
                     "Minor mode for pseudo-structurally editing Lisp code." t)
-                  (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
-                  (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
-                  (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-                  (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1))))))
+                  (global-set-key (kbd "C-h") 'delete-backward-char)
+                  (add-hook 'emacs-lisp-mode-hook       #'paredit-mode-hook)
+                  (add-hook 'lisp-mode-hook             #'paredit-mode-hook)
+                  (add-hook 'lisp-interaction-mode-hook #'paredit-mode-hook)
+                  (add-hook 'scheme-mode-hook           #'paredit-mode-hook))))
 
 (provide 'set-paredit)
 ;;; set-paredit.el ends here
