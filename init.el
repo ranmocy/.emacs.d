@@ -45,7 +45,10 @@
                 (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
 
 ;;----------custom-setting---------
-(require 'customize)
+(if (file-exists-p custom-file)
+    (require 'customize)
+  (make-directory (file-name-directory custom-file))
+  (copy-file (expand-file-name "customize.el.example" user-emacs-directory) custom-file))
 (require 'set-function)
 (require 'set-environment)
 (require 'set-editor)
@@ -63,9 +66,7 @@
       (server-start))))
 
 ;;----------el-get-sync----------
-(el-get 'sync
-        (append '(el-get google-maps)
-                (mapcar 'el-get-source-name el-get-sources)))
+(el-get 'sync (append '(el-get) (mapcar 'el-get-source-name el-get-sources)))
 
 ;;; init.el ends here
 (global-set-key (kbd "C-s-SPC") 'just-one-space)

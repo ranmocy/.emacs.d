@@ -37,7 +37,7 @@
      (setq yas/root-directory (expand-file-name "snippets" user-emacs-directory))
      (yas/load-directory yas/root-directory)
      (yas/load-directory (expand-file-name "snippets" (file-name-directory (locate-library "yasnippet"))))
-     (yas/load-directory (expand-file-name "extras/imported" (file-name-directory (locate-library "yasnippet"))))
+     ;; (yas/load-directory (expand-file-name "extras/imported" (file-name-directory (locate-library "yasnippet"))))
      (global-set-key [backtab] `yas/expand))
   )
 
