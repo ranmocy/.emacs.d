@@ -9,6 +9,7 @@
 
 (eval-after-load "mew"
   '(progn
+     (add-to-list 'exec-path (expand-file-name "el-get/mew/bin/" user-emacs-directory))
      (setq mew-icon-directory
            (expand-file-name "etc" (file-name-directory (locate-library "mew.el"))))
      (setq mew-use-cached-passwd t)

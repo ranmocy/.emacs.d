@@ -16,9 +16,9 @@
 (eval-after-init
  '(progn
     (require 'dired-details+)
-    (require 'diredful)
     ;; (define-key dired-mode-map "(" 'dired-details-hide)
     ;; (define-key dired-mode-map ")" 'dired-details-show)
+    (require 'diredful)
     (add-hook 'dired-mode-hook
               '(lambda ()
                  (dired-omit-mode 1)))))

@@ -36,6 +36,8 @@
  x-select-enable-clipboard t            ; 支持emacs和外部程序的粘贴
  )
 
+(global-set-key (kbd "s-SPC") 'just-one-space)
+
 ;; whenever an external process changes a file underneath emacs, and there
 ;; was no unsaved changes in the corresponding buffer, just revert its
 ;; content to reflect what's on-disk.
