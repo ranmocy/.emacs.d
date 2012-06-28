@@ -4,28 +4,19 @@
 
 ;; Define custom
 
-(cond
- ((system-type-unix-like-p)
-  (setq my/org-directory "~/Documents/Org/")
-  )
- (t
-  (setq my/org-directory nil))
- )
-(setq my/org-gtd-file (expand-file-name "gtd.org" my/org-directory))
-(setq my/org-todo-file (expand-file-name "todo.org" my/org-directory))
-(setq my/org-journal-file (expand-file-name "journal.org" my/org-directory))
-(setq my/org-remember-file (expand-file-name "remember.org" my/org-directory))
+(setq my/org-gtd-file (expand-file-name "gtd.org" org-directory))
+(setq my/org-todo-file (expand-file-name "todo.org" org-directory))
+(setq my/org-journal-file (expand-file-name "journal.org" org-directory))
+(setq my/org-remember-file (expand-file-name "remember.org" org-directory))
 
 ;; Just open my gtd file.
 (defun gtd ()
   "Open the GTD file."
   (interactive)
   (find-file my/org-gtd-file))
-(global-set-key "\C-cg" 'gtd)
-(global-set-key (kbd "C-c a") 'org-agenda)
-
 (define-prefix-command 'launcher-map)
 (global-set-key (kbd "C-`") 'launcher-map)
+(define-key launcher-map "g" 'gtd)
 (define-key launcher-map "a" 'org-agenda)
 (define-key launcher-map "r" 'org-remember)
 ;; (define-key launcher-map "b" 'org-iswitchb)
@@ -115,7 +106,6 @@
 (setq org-fontify-emphasized-text t)
 (setq org-fontify-done-headline t)
 (setq org-agenda-include-all-todo nil)
-(setq org-directory my/org-directory)
 (setq org-export-html-style "<link rel=stylesheet href=\"./org.css\" type=\"text/css\">")
 (setq org-export-with-section-numbers nil)
 (setq org-export-with-toc nil)
