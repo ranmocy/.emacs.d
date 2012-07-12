@@ -35,7 +35,6 @@
          :after (lambda ()
                   (autoload 'paredit-mode "paredit"
                     "Minor mode for pseudo-structurally editing Lisp code." t)
-                  (global-set-key (kbd "C-h") 'delete-backward-char)
                   (add-hook 'emacs-lisp-mode-hook       #'paredit-mode-hook)
                   (add-hook 'lisp-mode-hook             #'paredit-mode-hook)
                   (add-hook 'lisp-interaction-mode-hook #'paredit-mode-hook)

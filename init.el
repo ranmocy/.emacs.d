@@ -66,6 +66,10 @@
       (server-start))))
 
 ;;----------el-get-sync----------
-(el-get 'sync (append '(el-get) (mapcar 'el-get-source-name el-get-sources)))
+;; (el-get 'sync (append '(el-get) (mapcar 'el-get-source-name el-get-sources)))
+(el-get 'sync)
 
 ;;; init.el ends here
+;; (global-set-key (kbd "C-x C-i") 'idomenu)
+;; (global-set-key [S-mouse-1] 'imenu)
+(setq imenu-auto-rescan t)

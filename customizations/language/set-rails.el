@@ -5,12 +5,15 @@
 (require 'set-slim-mode)
 (require 'set-css-mode)
 (require 'set-sass-mode)
+(require 'set-less-mode)
 (require 'set-cucumber)
 
 (add-to-el-get-sources
  '(:name rinari
          :type git
          :url "git://github.com/eschulte/rinari.git"))
+
+(setq rinari-tags-file-name "TAGS")
 
 ;; helper-function
 (defun is-rails-project ()

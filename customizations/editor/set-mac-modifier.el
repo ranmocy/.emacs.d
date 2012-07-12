@@ -1,3 +1,4 @@
+
 ;;; set-mac-modifier.el --- Setup Mac OS X modifier
 
 ;; Copyright (C) 2012  Ranmocy Sheng
@@ -25,19 +26,29 @@
 ;;; Code:
 
 (when (system-type-darwin-p)
-  (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'super)
-  (setq mac-control-modifier 'control)
-  (setq mac-function-modifier 'super)
-  (setq mac-right-option-modifier nil)
-  (setq mac-allow-anti-aliasing t)      ; anti-aliasing with mac system
-  )
+  (defun mac-toggle-wicked-modifier-layout ()
+    "This is the most wicked layout in the world, but it is good for your fingers. It is more ergo."
+    (interactive)
+    (if (eq mac-control-modifier 'control)
+        (progn
+          (setq mac-command-modifier 'control)
+          (setq mac-right-command-modifier 'control)
+          (setq mac-option-modifier 'super)
+          (setq mac-right-option-modifier nil)
+          (setq mac-function-modifier 'super)
+          (setq mac-control-modifier 'meta))
+      (progn
+        (setq mac-command-modifier 'meta)
+        (setq mac-right-comman-modifier 'meta)
+        (setq mac-option-modifier 'super)
+        (setq mac-right-option-modifier nil)
+        (setq mac-function-modifier 'super)
+        (setq mac-control-modifier 'control)
+        )))
+
+  (global-set-key "\M- " 'set-mark-command)
+  (mac-toggle-wicked-modifier-layout)
+  (setq mac-allow-anti-aliasing t))
 
 (provide 'set-mac-modifier)
 ;;; set-mac-modifier.el ends here
-;; (setq mac-command-modifier 'control)
-;; (setq mac-option-modifier 'meta)
-;; (setq mac-control-modifier 'super)
-;; (setq mac-function-modifier 'function)
-;; (setq mac-right-option-modifier nil)
-;; (setq mac-allow-anti-aliasing t)

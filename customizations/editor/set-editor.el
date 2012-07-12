@@ -1,3 +1,4 @@
+(require 'set-anything)
 (require 'set-auto-save)
 (require 'set-auto-backup)
 (require 'set-auto-complete)
@@ -37,6 +38,7 @@
  )
 
 (global-set-key (kbd "s-SPC") 'just-one-space)
+(global-set-key (kbd "C-h") 'delete-backward-char)
 
 ;; whenever an external process changes a file underneath emacs, and there
 ;; was no unsaved changes in the corresponding buffer, just revert its
