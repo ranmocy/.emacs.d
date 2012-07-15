@@ -1,7 +1,8 @@
 (add-to-el-get-sources
  '(:name ruby-mode
          :type git
-         :url "git://github.com/david/ruby-mode.git"
+         :url "git://github.com/emacsmirror/ruby-mode.git"
+         ;; :load "ruby-mode.el"
          :after (lambda ()
                   (autoload 'ruby-mode "ruby-mode" nil t)
                   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))

@@ -12,7 +12,7 @@
      (global-set-key (kbd "s-]") 'tabbar-forward-tab)
      (global-set-key (kbd "s-{") 'tabbar-backward-group)
      (global-set-key (kbd "s-}") 'tabbar-forward-group)
-     (global-set-key (kbd "s-=") 'tabbar-press-home)
+     (global-set-key (kbd "s-`") 'tabbar-press-home)
      (global-set-key (kbd "s-<tab>") 'tabbar-forward-group)
      (setq tabbar-help-on-tab-function nil)
 

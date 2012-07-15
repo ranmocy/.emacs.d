@@ -26,28 +26,27 @@
 ;;; Code:
 
 (when (system-type-darwin-p)
-  (defun mac-toggle-wicked-modifier-layout ()
+  (defun mac-set-wicked-modifier-layout (wicked)
     "This is the most wicked layout in the world, but it is good for your fingers. It is more ergo."
-    (interactive)
-    (if (eq mac-control-modifier 'control)
+    (setq mac-command-modifier 'meta)
+    (setq mac-right-command-modifier 'meta)
+    (setq mac-option-modifier 'super)
+    (setq mac-right-option-modifier 'super)
+    (setq mac-control-modifier 'control)
+    (setq mac-right-control-modifier 'control)
+    (setq mac-function-modifier 'super)
+
+    (interactive "cWicked?")
+    (if (eq wicked t)
         (progn
-          (setq mac-command-modifier 'control)
-          (setq mac-right-command-modifier 'control)
-          (setq mac-option-modifier 'super)
-          (setq mac-right-option-modifier nil)
-          (setq mac-function-modifier 'super)
-          (setq mac-control-modifier 'meta))
-      (progn
-        (setq mac-command-modifier 'meta)
-        (setq mac-right-comman-modifier 'meta)
-        (setq mac-option-modifier 'super)
-        (setq mac-right-option-modifier nil)
-        (setq mac-function-modifier 'super)
-        (setq mac-control-modifier 'control)
-        )))
+          (setq mac-option-modifier 'control)
+          (setq mac-right-option-modifier 'control)
+          ))
+
+    wicked)
 
   (global-set-key "\M- " 'set-mark-command)
-  (mac-toggle-wicked-modifier-layout)
+  (mac-set-wicked-modifier-layout t)
   (setq mac-allow-anti-aliasing t))
 
 (provide 'set-mac-modifier)
