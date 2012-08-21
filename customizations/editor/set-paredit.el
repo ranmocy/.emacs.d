@@ -40,5 +40,12 @@
                   (add-hook 'lisp-interaction-mode-hook #'paredit-mode-hook)
                   (add-hook 'scheme-mode-hook           #'paredit-mode-hook))))
 
+(eval-after-load "paredit"
+  '(progn ;; type parens in pairs with Hyper and right hands's home-row
+     (define-key paredit-mode-map (kbd "H-{") (lambda () (interactive) (insert "{}") (backward-char 1)))
+     (define-key paredit-mode-map (kbd "H-(") (lambda () (interactive) (insert "()") (backward-char 1)))
+     (define-key paredit-mode-map (kbd "H-[") (lambda () (interactive) (insert "[]") (backward-char 1)))
+     ))
+
 (provide 'set-paredit)
 ;;; set-paredit.el ends here
