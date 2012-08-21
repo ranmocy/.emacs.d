@@ -1,6 +1,6 @@
 ;;----------buffer-control----------
 (global-set-key (kbd "s-`") 'other-window)
-(when (not (system-type-windows-p))
+(when (system-type-p :unixlike)
   (global-set-key (kbd "s-d") 'dired)
   (global-set-key (kbd "s-b") 'ibuffer)
   (global-set-key (kbd "s-w") 'kill-this-buffer-unless-some)

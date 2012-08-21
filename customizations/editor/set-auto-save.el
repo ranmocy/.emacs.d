@@ -27,10 +27,9 @@
 
 ;;; Code:
 
-(if (system-type-unix-like-p)
-    (setq autosave-dir (concat "/tmp/emacs_" (user-login-name) "/autosaves/"))
-  (setq autosave-dir (concat temporary-file-directory "emacs_autosaves"))
-  )
+(set-as-system-type 'autosave-dir
+                    :any (concat temporary-file-directory "emacs_autosaves")
+                    :unixlike (concat "/tmp/emacs_" (user-login-name) "/autosaves/"))
 
 (make-directory autosave-dir t)
 

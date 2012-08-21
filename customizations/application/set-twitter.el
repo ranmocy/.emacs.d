@@ -45,7 +45,7 @@
                         ("." . twittering-toggle-reverse-mode)
                         ;; ("W" . twittering-update-status-interactive)
                         ))))
-    (when (system-type-linux-p)
+    (when (system-type-p :linux)
       (add-hook 'twittering-new-tweets-hook
                 (lambda ()
                   (let ((n twittering-new-tweets-count))

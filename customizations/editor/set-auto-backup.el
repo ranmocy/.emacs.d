@@ -27,10 +27,9 @@
 
 ;;; Code:
 
-(if (system-type-unix-like-p)
-    (setq backup-dir (concat "/tmp/emacs_" (user-login-name) "/backups/"))
-  (setq backup-dir (concat temporary-file-directory "emacs_backups"))
-  )
+(set-as-system-type `backup-dir
+                    :any (concat temporary-file-directory "emacs_backups")
+                    :unixlike (concat "/tmp/emacs_" (user-login-name) "/backups/"))
 
 (make-directory backup-dir t)
 

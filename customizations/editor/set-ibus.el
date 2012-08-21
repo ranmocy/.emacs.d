@@ -24,7 +24,7 @@
 
 ;;; Code:
 
-(when (system-type-linux-p)
+(when (system-type-p :linux)
   (require 'ibus)
   (global-set-key (kbd "C-\\") 'ibus-toggle)
   (ibus-define-common-key ?\C-\s nil)     ;Use C-SPC for Set Mark command

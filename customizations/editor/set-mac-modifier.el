@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(when (system-type-darwin-p)
+(when (system-type-p :darwin)
   (defun mac-set-wicked-modifier-layout (wicked)
     "This is the most wicked layout in the world, but it is good for your fingers. It is more ergo."
     (setq mac-command-modifier 'meta)

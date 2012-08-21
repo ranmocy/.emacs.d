@@ -17,20 +17,27 @@
      (setq tabbar-help-on-tab-function nil)
 
      ;; 去掉emacs自带的几个buffer
-     (setq tabbar-buffer-list-function
-           (lambda ()
-             (remove-if
-              (lambda(buffer)
-                (find (aref (buffer-name buffer) 0) " *"))
-              (buffer-list))))
+     ;; (setq tabbar-buffer-list-function
+     ;;       (lambda ()
+     ;;         (remove-if
+     ;;          (lambda(buffer)
+     ;;            (find (aref (buffer-name buffer) 0) " *"))
+     ;;          (buffer-list))))
 
      ;; tabbar groups function
      (defun tabbar-buffer-groups ()
        (list
-        (if (eq major-mode 'dired-mode)
-            "Dired"
-          "Default"
-          )))
+        (if (string-equal "*" (substring (buffer-name) 0 1))  
+            "Emacs"
+          "Default")
+        ;; (cond 
+        ;;  ((memq major-mode '(shell-mode dired-mode))
+        ;;   "shell")
+        ;;  ((string-equal "*" (substring (buffer-name) 0 1))
+        ;;   "Emacs")
+        ;;  (t
+        ;;   "Default"))
+        ))
 
      ;; 切换到第N个buffer，1为第一个，负数表示从后数，注意0会出错，这里就不处理了
      (defun switch-tabbar (num)

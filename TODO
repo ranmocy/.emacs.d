@@ -1,7 +1,9 @@
 # -*- mode: org -*-
 #+TITLE:     TODO
 #+CATEGORY:  emacs
-
+* DONE set-as-system-type
+CLOSED: [2012-08-21 Tue 15:55]
+- State "DONE"       from ""           [2012-08-21 Tue 15:55]
 * Bugs
 ** ibus package
 ** auto header
