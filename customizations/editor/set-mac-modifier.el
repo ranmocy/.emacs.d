@@ -1,4 +1,3 @@
-
 ;;; set-mac-modifier.el --- Setup Mac OS X modifier
 
 ;; Copyright (C) 2012  Ranmocy Sheng
@@ -26,27 +25,38 @@
 ;;; Code:
 
 (when (system-type-p :darwin)
-  (defun mac-set-wicked-modifier-layout (wicked)
-    "This is the most wicked layout in the world, but it is good for your fingers. It is more ergo."
-    (setq mac-command-modifier 'meta)
-    (setq mac-right-command-modifier 'meta)
-    (setq mac-option-modifier 'super)
-    (setq mac-right-option-modifier 'super)
-    (setq mac-control-modifier 'control)
-    (setq mac-right-control-modifier 'control)
-    (setq mac-function-modifier 'super)
+  (defun mac-set-wicked-modifier-layout ()
+    (interactive)
+    (setq mac-command-modifier 'meta
+          mac-right-command-modifier 'meta
+          mac-option-modifier 'super
+          mac-right-option-modifier 'super
+          mac-control-modifier 'control
+          mac-right-control-modifier 'control
+          mac-function-modifier 'hyper)
+    (message "Now, modifiers are wicked~"))
 
-    (interactive "cWicked?")
-    (if (eq wicked t)
-        (progn
-          (setq mac-option-modifier 'control)
-          (setq mac-right-option-modifier 'control)
-          ))
+  (defun mac-set-normal-modifier-layout ()
+    (interactive)
+    (setq mac-command-modifier 'super
+          mac-right-command-modifier 'super
+          mac-option-modifier 'meta
+          mac-right-option-modifier 'meta
+          mac-control-modifier 'control
+          mac-right-control-modifier 'control
+          mac-function-modifier 'hyper)
+    (message "Now, modifiers are normal again~"))
 
-    wicked)
+  (defun mac-set-modifier-layout (wicked)
+    "This is the most wicked layout in the world, but it is good for your fingers.
+It is more ergo. Parameter can be t or nil."
+    (interactive "cWicked?(y/n)")
+    (cond
+     ((member wicked (list t ?y)) (mac-set-wicked-modifier-layout))
+     ((member wicked (list nil ?n)) (mac-set-normal-modifier-layout))
+     (t (message "Nothing happend."))))
 
-  (global-set-key "\M- " 'set-mark-command)
-  (mac-set-wicked-modifier-layout t)
+  (mac-set-modifier-layout t)
   (setq mac-allow-anti-aliasing t))
 
 (provide 'set-mac-modifier)
