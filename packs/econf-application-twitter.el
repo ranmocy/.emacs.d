@@ -2,7 +2,7 @@
  '(:name twittering-mode
          :type git
          :url "git://github.com/hayamiz/twittering-mode.git"
-         :after (lambda ()
+         :after (progn
                   (autoload 'twittering-mode "twittering-mode" nil t))))
 
 (eval-after-load "twittering-mode"

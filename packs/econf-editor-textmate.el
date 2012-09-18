@@ -29,7 +29,7 @@
          :type git
          :url "git://github.com/defunkt/textmate.el"
          :load "textmate.el"
-         :after (lambda ()
+         :after (progn
                   (textmate-mode))))
 
 (provide 'econf-editor-textmate)

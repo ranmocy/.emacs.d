@@ -3,7 +3,7 @@
  '(:name mew
          :type git
          :url "git://github.com/kazu-yamamoto/Mew.git"
-         :after (lambda ()
+         :after (progn
                   (autoload 'mew "mew" nil t)
                   (autoload 'mew-send "mew" nil t))))
 

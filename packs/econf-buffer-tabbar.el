@@ -2,7 +2,7 @@
  '(:name tabbar
          :type git
          :url "git://github.com/dholm/tabbar.git"
-         :after (lambda ()
+         :after (progn
                   (require 'tabbar)
                   (tabbar-mode t))))
 

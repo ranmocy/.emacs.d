@@ -1,7 +1,7 @@
 (add-to-el-get-sources
  '(:name markdown-mode
          :load "markdown-mode.el"
-         :after (lambda ()
+         :after (progn
                   (autoload 'markdown-mode "markdown-mode.el" nil t)
                   (add-to-list 'auto-mode-alist '("\\.\\(markdown\\|md\\|text\\)$" . markdown-mode)))))
 

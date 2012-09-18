@@ -1,7 +1,7 @@
 (add-to-el-get-sources
  '(:name css-mode
          :type elpa
-         :after (lambda ()
+         :after (progn
                   (autoload 'css-mode "css-mode" nil t))))
 
 (eval-after-load "css-mode"

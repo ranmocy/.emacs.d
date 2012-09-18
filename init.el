@@ -59,10 +59,10 @@
   (require 'customize))
 
 (defun load-econf (name)
-  ""
+  "Load econf with name."
   (let ((name (if (file-directory-p name)
-		  (expand-file-name "init" name)
-		name)))
+                  (expand-file-name "init" name)
+                name)))
     (when (file-exists-p name)
       (load-file name))
     ))
@@ -74,8 +74,7 @@
 
 
 ;;----------el-get-sync----------
-;; (el-get 'sync (append '(el-get) (mapcar 'el-get-source-name el-get-sources)))
-(el-get 'sync)
+(el-get 'sync (append '(el-get) (mapcar 'el-get-source-name el-get-sources)))
 
 
 ;;----------test-conf-area----------

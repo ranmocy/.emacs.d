@@ -3,7 +3,7 @@
          :type git
          :url "git://github.com/emacsmirror/ruby-mode.git"
          ;; :load "ruby-mode.el"
-         :after (lambda ()
+         :after (progn
                   (autoload 'ruby-mode "ruby-mode" nil t)
                   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
                   (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))

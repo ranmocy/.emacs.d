@@ -28,7 +28,7 @@
  '(:name yasnippet
          :type git
          :url "git://github.com/capitaomorte/yasnippet.git"
-         :after (lambda ()
+         :after (progn
                   (autoload 'yas/global-mode "yasnippet" nil t)
                   (yas/global-mode 1))))
 

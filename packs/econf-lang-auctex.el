@@ -2,7 +2,7 @@
  '(:name auctex
          :type elpa
          ;; :url "git://github.com/emacsmirror/auctex.git"
-         :after (lambda ()
+         :after (progn
                   (autoload 'latex-mode "tex-site" nil t))))
 
 (eval-after-load "tex-site"
