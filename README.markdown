@@ -12,13 +12,13 @@ This project just aims to set some little rules to make the custom files a littl
 
 ## File Rules
 * Every file here should be packaged to `provide` a feature and be `require` by others.
-* A file provide a feature to setup a package should be named with prefix `set-`.
+* A file provide a feature to setup a package should be named with prefix `econf-`.
 * A file provide a feature to extend a package should be named with prefix `ext-`.
+* `econf-test.el` is used for test codes temporarily.
 
 ## Path Rules
-* Every customized files are under `customize/`, separated into different directory by categorization.
+* Every econf files are under `packs/`, separated into different directory by functionality.
 * Packages are managed by `el-get` under `el-get/` unitedly.
-* Third-parties packages out of the `el-get` will be placed under `plugins/`. Never modified directly.
 * Themes are under `themes/` used by Emacs 24 integrated themes management.
 * Snippets are under `snippets/` used by `yasnippet`.
 * Everything sensitive is under `personal/`.
