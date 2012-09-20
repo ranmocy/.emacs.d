@@ -11,76 +11,31 @@
 ;; GitCafe: `http://gitcafe.com/ranmocy/emacs_config'
 ;; Inspired-by: `https://github.com/overtone/emacs-live', `https://github.com/purcell/emacs.d'
 
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
 ;; Every file here should be packaged to `provide' a feature and be `require' by others.
 ;; Basically it can adapt to MacOS and any distribution of GNU/Linux.
 
-;;----------Path----------
-(defconst pack-load-path (expand-file-name "packs/" user-emacs-directory)
-  "Where is my packs?")
-(defconst custom-theme-load-path (list (expand-file-name "themes/" user-emacs-directory) t)
-  "Some unpublished theme? Or Emacs defaults.")
-(defconst personal-path (expand-file-name "personal/" user-emacs-directory)
-  "We all want some place for personal only.")
-(defconst custom-file (expand-file-name "customize.el" personal-path)
-  "Emacs default customization file")
+;;; Code:
 
+(add-to-list 'load-path (expand-file-name "packs/" user-emacs-directory))
+(require 'econf nil t)
 
-;; Set exec-path from shell
-;; Quote from purcell/emacs.d
-(let ((path-from-shell (replace-regexp-in-string "[ \t\n]*$" "" (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
-  (setenv "PATH" path-from-shell)
-  (setq exec-path (split-string path-from-shell path-separator)))
-
-
-;; Load path
-;; add custom path and its subdirs to load-path
-(let ((default-directory pack-load-path))
-  (normal-top-level-add-to-load-path '("."))
-  (normal-top-level-add-subdirs-to-load-path))
-
-(add-to-list 'load-path personal-path)
-
-
-;;----------el-get----------
-(require 'package)
-(add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(package-initialize)
-
-(add-to-list 'load-path (expand-file-name "el-get/el-get" user-emacs-directory))
-(unless (require 'el-get nil t)
-  (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-                (lambda (s) (goto-char (point-max)) (eval-print-last-sexp))))
-
-
-;;----------custom-conf---------
-(when (locate-library "customize")
-  (require 'customize))
-
-(defun load-econf (name)
-  "Load econf with name."
-  (let ((name (if (file-directory-p name)
-                  (expand-file-name "init" name)
-                name)))
-    (when (file-exists-p name)
-      (load-file name))
-    ))
-
-(let* ((extensions (directory-files pack-load-path t "^ext-"))
-       (packs (directory-files pack-load-path t "^econf-")))
-  (mapc #'load-econf extensions)
-  (mapc #'load-econf packs))
-
-
-;;----------el-get-sync----------
-(el-get 'sync (append '(el-get) (mapcar 'el-get-source-name el-get-sources)))
-
-
-;;----------test-conf-area----------
-(when (locate-library "econf-test")
-  (eval-after-init
-   '(require 'econf-test)))
-
+;; (unless (require 'econf nil t)
+;;   (url-retrieve "https://raw.github.com/ranmocy/emacs.d/master/packs/econf.el"
+;; 		(lambda (s) (save-buffer (expand-file-name "packs/econf.el" user-emacs-directory)))))
 
 ;;; init.el ends here
