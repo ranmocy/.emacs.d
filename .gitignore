@@ -1,12 +1,4 @@
-TODO
-econf-test.el
-
-personal/
-auto-save-list/
-url/
-el-get/
-elpa/
-
-*~
-#?*
 *.elc
+econf-test.el
+personal/
+el-get/
