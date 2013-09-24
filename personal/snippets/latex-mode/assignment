@@ -1,0 +1,70 @@
+# name: assignment template
+# key: assignment
+# --
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\usepackage{./../usfassignment}
+\settitle{Assignment ${1:1}}
+\setauthor{Wanzhang Sheng}
+\setcourse{${2:CS673: Graduate Algorithms}}
+
+\begin{document}
+
+\maketitle % Print the title
+
+% -----------------------------------------------------------------------------
+% PROBLEM 1
+% -----------------------------------------------------------------------------
+\section{}
+
+\begin{fancyquotes}
+  $3
+\end{fancyquotes}
+
+\pagebreak
+
+% -----------------------------------------------------------------------------
+% PROBLEM 2
+% -----------------------------------------------------------------------------
+\section{}
+
+\begin{fancyquotes}
+  $4
+\end{fancyquotes}
+
+\pagebreak
+
+% -----------------------------------------------------------------------------
+% PROBLEM 3
+% -----------------------------------------------------------------------------
+\section{}
+
+\begin{fancyquotes}
+  $5
+\end{fancyquotes}
+
+\pagebreak
+
+
+% -----------------------------------------------------------------------------
+% PROBLEM 4
+% -----------------------------------------------------------------------------
+\section{}
+
+\begin{fancyquotes}
+  $6
+\end{fancyquotes}
+
+\pagebreak
+
+% -----------------------------------------------------------------------------
+% PROBLEM 5
+% -----------------------------------------------------------------------------
+\section{}
+
+\begin{fancyquotes}
+  $7
+\end{fancyquotes}
+
+\pagebreak
+
+\end{document}

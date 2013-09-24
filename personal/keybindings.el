@@ -44,6 +44,7 @@
 (global-set-key (kbd "s-O") 'prelude-open-with)
 (global-set-key (kbd "s-W") 'delete-frame)
 (global-set-key (kbd "s-w") 'kill-this-buffer-unless-some)
+(global-set-key (kbd "s-`") 'other-window)
 (global-set-key (kbd "C-c s") 'prelude-swap-windows)
 (global-set-key (kbd "C-c D") 'prelude-delete-file-and-buffer)
 (global-set-key (kbd "C-c r") 'prelude-rename-file-and-buffer)

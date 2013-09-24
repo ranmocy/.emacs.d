@@ -1,0 +1,10 @@
+# name: algorithm env
+# key: algorithm
+# --
+\begin{algorithm}[H]
+  \SetKwProg{Fn}{Function}{}{end}
+  \Fn{\textsc{${1:function_name}}{(${2:args})}}{
+    $0
+  }
+  \caption{${3:Description of function}}
+\end{algorithm}

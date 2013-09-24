@@ -30,8 +30,11 @@
 
 (defconst custom-theme-load-path (list (expand-file-name "themes/" user-emacs-directory) t)
   "Some unpublished theme? Or Emacs defaults.")
+(add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (setq prelude-guru nil)
+(setq whitespace-line-column 160) ;; limit line length
 
 ;; Modifiers
 (setq mac-command-modifier 'super)
@@ -53,7 +56,9 @@
 ;; Fonts
 (when (eq system-type 'darwin)
   ;; default Latin font (e.g. Consolas)
-  (set-default-font "YaHeiMono-18")
+  ;; (set-default-font "YaHeiMono-18")
+  ;; (大师)
+  ;; (set-default-font "Hei-18")
   ;; (set-face-attribute 'default nil :family "YaHeiMono")
   ;; default font size (point * 10)
   ;;
@@ -77,6 +82,15 @@
 ;; Default settings
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
+
+;; Snippets
+(require 'yasnippet)
+(setq yas-snippet-dirs
+      (remove nil
+              (list "~/.emacs.d/personal/snippets"
+                    (when yas--load-file-name
+                      (concat (file-name-directory yas--load-file-name) "snippets")))))
+(yas-global-mode 1)
 
 ;; Start server daemon
 (server-start)
