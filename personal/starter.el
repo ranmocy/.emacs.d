@@ -100,6 +100,13 @@
                       (concat (file-name-directory yas--load-file-name) "snippets")))))
 (yas-global-mode 1)
 
+;; Indent-guide
+(require 'indent-guide)
+(indent-guide-global-mode)
+;; (setq indent-guide-char "|")
+(set-face-attribute 'indent-guide-face nil
+                    :foreground "#CCC")
+
 ;; Start server daemon
 (server-start)
 
