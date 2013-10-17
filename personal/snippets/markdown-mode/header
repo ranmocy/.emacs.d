@@ -1,0 +1,12 @@
+# name: markdown yaml header
+# key: header
+# --
+---
+title: ${1:Title}
+created-at: ${2:`(format-time-string "%a %b %d %H:%M:%S %Z %Y" (current-time))`}
+updated-at: $2
+category: ${3:Category}
+---
+
+$0
+
