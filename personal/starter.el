@@ -30,6 +30,9 @@
 
 (defconst custom-theme-load-path (list (expand-file-name "themes/" user-emacs-directory) t)
   "Some unpublished theme? Or Emacs defaults.")
+(disable-theme 'zenburn)
+(load-theme 'solarized-light)
+
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
@@ -56,21 +59,27 @@
 ;; Fonts
 (when (eq system-type 'darwin)
   ;; default Latin font (e.g. Consolas)
-  ;; (set-default-font "YaHeiMono-18")
-  ;; (大师)
+  ;; (set-default-font "YaHeiMono")
+  ;; (大师)中文不是这样的
   ;; (set-default-font "Hei-18")
+  ;; (set-default-font "Consolas")
+  ;; (set-default-font "Heiti SC-18")
+  ;; (set-frame-font "Heiti SC-18")
+  ;; (set-default-font "YaHei Consolas Hybrid")
   ;; (set-face-attribute 'default nil :family "YaHeiMono")
   ;; default font size (point * 10)
   ;;
   ;; WARNING!  Depending on the default font,
   ;; if the size is not supported very well, the frame will be clipped
   ;; so that the beginning of the buffer may not be visible correctly.
-  (set-face-attribute 'default nil :height 165)
+  ;; (set-face-attribute 'default nil :height 165)
   ;; use specific font for Korean charset.
   ;; if you want to use different font size for specific charset,
   ;; add :size POINT-SIZE in the font-spec.
-  (set-fontset-font t 'hangul (font-spec :name "NanumGothicCoding" :size 18))
-  (set-fontset-font t 'cp936 (font-spec :name "YaheiMono" :size 18))
+  (set-frame-font "DejaVu Sans Mono-18")
+  ;; (set-frame-font "Menlo-18")
+  ;; (set-fontset-font t 'hangul (font-spec :name "Inconsolata" :size 18))
+  (set-fontset-font t 'cp936 (font-spec :name "Heiti SC" :size 18))
   ;; you may want to add different for other charset in this way.
   )
 
