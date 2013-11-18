@@ -1,0 +1,4 @@
+# name: FILE *fout = fopen(..., ...);
+# key: fout
+# --
+FILE *${fout} = fopen("`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`.out", "w");

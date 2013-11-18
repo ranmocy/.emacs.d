@@ -1,0 +1,4 @@
+# name: FILE *fin = fopen(..., ...);
+# key: fin
+# --
+FILE *${fin} = fopen("`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`.in", "r");

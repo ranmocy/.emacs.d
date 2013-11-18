@@ -1,0 +1,14 @@
+# name: func ... { ... }
+# key: func
+# --
+${1:void} ${2:name}($3)
+{
+    $0
+    return${1:$(cond
+    ((equal "void" yas-text) "")
+    ((equal "int" yas-text) " 0")
+    ((equal "bool" yas-text) " true")
+    ((equal "char" yas-text) " ''")
+    (t (concat " " yas-text))
+    )};
+}

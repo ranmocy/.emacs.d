@@ -1,0 +1,4 @@
+# name: bool by typedef enum
+# key: defbool
+# --
+typedef enum { false, true } bool;
