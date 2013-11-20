@@ -36,6 +36,17 @@
       (bury-buffer)
     (kill-buffer (current-buffer))))
 
+(defun join-region (beg end)
+  "Apply join-line over region."
+  (interactive "r")
+  (if mark-active
+      (let ((beg (region-beginning))
+            (end (copy-marker (region-end))))
+        (goto-char beg)
+        (while (< (point) end)
+          (join-line 1)))
+    (join-line 1)))
+
 
 ;; Key Bindings
 (global-set-key [(super return)] 'prelude-smart-open-line)
@@ -56,7 +67,7 @@
 (global-set-key (kbd "s-g") 'projectile-grep)
 
 (global-set-key (kbd "s-x") 'er/expand-region)
-(global-set-key (kbd "s-j") 'prelude-top-join-line)
+(global-set-key (kbd "s-j") 'join-region)
 (global-set-key (kbd "s-k") 'prelude-kill-whole-line)
 
 ;; (global-set-key (kbd "C-h") 'paredit-backward-delete)
