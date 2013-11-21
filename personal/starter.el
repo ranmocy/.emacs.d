@@ -24,20 +24,13 @@
 
 ;;; Code:
 
-;; This buffer is for notes you don't want to save, and for Lisp evaluation.
-;; If you want to create a file, visit that file with C-x C-f,
-;; then enter the text in that file's own buffer.
-
-(defconst custom-theme-load-path (list (expand-file-name "themes/" user-emacs-directory) t)
-  "Some unpublished theme? Or Emacs defaults.")
-(disable-theme 'zenburn)
-(load-theme 'solarized-light)
-
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (setq prelude-guru nil)
-(setq whitespace-line-column 160) ;; limit line length
+(setq whitespace-line-column 160)       ; limit line length
+(setq projectile-switch-project-action 'projectile-dired)
+(setq dired-listing-switches "-ahoG")    ; change dired to all files, human readable size, no group info
 
 ;; Modifiers
 (setq mac-command-modifier 'super)
@@ -53,60 +46,20 @@
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
-;; Frames
+;; Frames transparent when inactive
 (set-frame-parameter nil 'alpha '(100 90))
 
 ;; Fonts
 (when (eq system-type 'darwin)
-  ;; default Latin font (e.g. Consolas)
-  ;; (set-default-font "YaHeiMono")
-  ;; (大师)中文不是这样的
-  ;; (set-default-font "Hei-18")
-  ;; (set-default-font "Consolas")
-  ;; (set-default-font "Heiti SC-18")
-  ;; (set-frame-font "Heiti SC-18")
-  ;; (set-default-font "YaHei Consolas Hybrid")
-  ;; (set-face-attribute 'default nil :family "YaHeiMono")
-  ;; default font size (point * 10)
-  ;;
-  ;; WARNING!  Depending on the default font,
-  ;; if the size is not supported very well, the frame will be clipped
-  ;; so that the beginning of the buffer may not be visible correctly.
-  ;; (set-face-attribute 'default nil :height 165)
-  ;; use specific font for Korean charset.
-  ;; if you want to use different font size for specific charset,
-  ;; add :size POINT-SIZE in the font-spec.
-  (set-frame-font "DejaVu Sans Mono-18")
-  ;; (set-frame-font "Menlo-18")
-  ;; (set-fontset-font t 'hangul (font-spec :name "Inconsolata" :size 18))
-  (set-fontset-font t 'cp936 (font-spec :name "Heiti SC" :size 18))
-  ;; you may want to add different for other charset in this way.
-  )
-
-;; AC
-(require 'auto-complete-config)
-;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20130503.2013")
-(ac-config-default)
-(setq ac-use-menu-map t)
-;; Default settings
-(define-key ac-menu-map "\C-n" 'ac-next)
-(define-key ac-menu-map "\C-p" 'ac-previous)
-
-;; Snippets
-(require 'yasnippet)
-(setq yas-snippet-dirs
-      (remove nil
-              (list "~/.emacs.d/personal/snippets"
-                    (when yas--load-file-name
-                      (concat (file-name-directory yas--load-file-name) "snippets")))))
-(yas-global-mode 1)
-
-;; Indent-guide
-(require 'indent-guide)
-(indent-guide-global-mode)
-;; (setq indent-guide-char "|")
-(set-face-attribute 'indent-guide-face nil
-                    :foreground "#CCC")
+  ;; Test Text: (大师)中文不是这样的`'""
+  ;; Set default font
+  (set-face-attribute 'default nil
+                      :family "Inconsolata"
+                      :height 180)
+  ;; Set default font set for Chinese
+  (set-fontset-font t 'cp936 (font-spec
+                              :name "Microsoft YaHei"
+                              :size 18)))
 
 ;; Start server daemon
 (server-start)

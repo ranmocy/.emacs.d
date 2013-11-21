@@ -31,9 +31,6 @@
                              (setq TeX-save-query nil)
                              (setq TeX-show-compilation t)))
 
-;; eLisp
-;; Compile after save
-
 ;; dot-mode
 (add-to-list 'auto-mode-alist '("\\.gv$" . graphviz-dot-mode))
 

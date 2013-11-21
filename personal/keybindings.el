@@ -28,16 +28,21 @@
 (prelude-global-mode '-1)
 
 ;; Kill some buffers
-(setq protected-buffer-list '("*scratch*" "*Messages*"))
+(defcustom protected-buffer-list '("*scratch*" "*Messages*")
+  "The buffers you want to protect to be closed."
+  :group 'prelude-buffer
+  :type 'list
+  :safe 'listp)
+
 (defun kill-this-buffer-unless-some ()
-  "Kill this buffer unless it in 'protected-buffer-list."
+  "Kill this buffer unless it in `protected-buffer-list'."
   (interactive)
   (if (member (buffer-name (current-buffer)) protected-buffer-list)
       (bury-buffer)
     (kill-buffer (current-buffer))))
 
 (defun join-region (beg end)
-  "Apply join-line over region."
+  "Apply `join-line' over region from BEG to END."
   (interactive "r")
   (if mark-active
       (let ((beg (region-beginning))
@@ -51,10 +56,12 @@
 ;; Key Bindings
 (global-set-key [(super return)] 'prelude-smart-open-line)
 (global-set-key [(super shift return)] 'prelude-smart-open-line-above)
+(global-set-key (kbd "s-n") 'prelude-create-scratch-buffer)
+(global-set-key (kbd "s-N") 'new-frame)
+(global-set-key (kbd "s-w") 'kill-this-buffer-unless-some)
+(global-set-key (kbd "s-W") 'delete-frame)
 (global-set-key (kbd "s-o") 'prelude-recentf-ido-find-file)
 (global-set-key (kbd "s-O") 'prelude-open-with)
-(global-set-key (kbd "s-W") 'delete-frame)
-(global-set-key (kbd "s-w") 'kill-this-buffer-unless-some)
 (global-set-key (kbd "s-`") 'other-window)
 (global-set-key (kbd "C-c s") 'prelude-swap-windows)
 (global-set-key (kbd "C-c D") 'prelude-delete-file-and-buffer)
@@ -70,8 +77,10 @@
 (global-set-key (kbd "s-j") 'join-region)
 (global-set-key (kbd "s-k") 'prelude-kill-whole-line)
 
-;; (global-set-key (kbd "C-h") 'paredit-backward-delete)
-;; (global-set-key (kbd "C-c n") 'prelude-cleanup-buffer)
+;; (global-set-key (kbd "C-?") 'help-command)
+(global-set-key (kbd "M-H") 'mark-paragraph)
+(global-set-key (kbd "C-h") 'delete-backward-char)
+(global-set-key (kbd "M-h") 'backward-kill-word)
 
 ;; Edit
 (global-set-key [(control shift up)]  'prelude-move-line-up)
