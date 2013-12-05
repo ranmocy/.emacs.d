@@ -56,6 +56,8 @@
 ;; Key Bindings
 (global-set-key [(super return)] 'prelude-smart-open-line)
 (global-set-key [(super shift return)] 'prelude-smart-open-line-above)
+(global-set-key [(control return)] 'comment-indent-new-line)
+
 (global-set-key (kbd "s-n") 'prelude-create-scratch-buffer)
 (global-set-key (kbd "s-N") 'new-frame)
 (global-set-key (kbd "s-w") 'kill-this-buffer-unless-some)

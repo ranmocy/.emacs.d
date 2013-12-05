@@ -59,7 +59,7 @@
   ;; Set default font set for Chinese
   (set-fontset-font t 'cp936 (font-spec
                               :name "Microsoft YaHei"
-                              :size 18)))
+                              :size 16)))
 
 ;; Start server daemon
 (server-start)

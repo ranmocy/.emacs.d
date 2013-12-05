@@ -24,6 +24,10 @@
 
 ;;; Code:
 
+;; ruby-mode
+(add-hook 'ruby-mode-hook
+          (lambda () (rvm-activate-corresponding-ruby)))
+
 ;;set XeTeX mode in TeX/LaTeX
 (add-hook 'LaTeX-mode-hook (lambda()
                              (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
