@@ -64,5 +64,51 @@
 ;; Start server daemon
 (server-start)
 
+;; Edit server
+(when (require 'edit-server nil t)
+  (setq edit-server-new-frame t)
+  (setq edit-server-default-major-mode 'markdown-mode)
+  (setq edit-server-url-major-mode-alist
+        '(("github\\.com" . markdown-mode)
+          ("maxiang\\.info" . markdown-mode)))
+
+  ;; TODO: hack the function
+  (add-hook 'edit-server-start-hook '(lambda () (select-frame-set-input-focus (window-frame (selected-window)))))
+
+  (add-hook 'edit-server-done-hook
+            '(lambda () (kill-ring-save (point-min) (point-max))))
+
+  ;; For Gmail compose with Markdown
+  (when (require 'html-to-markdown nil t)
+    (add-hook 'edit-server-start-hook
+              '(lambda ()
+                 (when (string-match "^mail\\.google\\.com/mail/" edit-server-url)
+                   (htm--convert t)
+                   ;; Kill all spaces at the end of the lines.
+                   (goto-char (point-min))
+                   (while (search-forward-regexp "[	 ]*\n" nil t)
+                     (replace-match "\n"))
+                   ;; Keep just one empty line between contents
+                   (goto-char (point-min))
+                   (while (search-forward-regexp "\n\n\n+" nil t)
+                     (replace-match "\n\n"))
+                   ;; Cleanup the last line with one space
+                   (goto-char (point-min))
+                   (while (search-forward-regexp "[\n\s]\\{2,\\}\\'" nil t 1)
+                     (replace-match "\n"))
+                   (markdown-mode)
+                   )))
+    (add-hook 'edit-server-done-hook
+              '(lambda ()
+                 (when (string-match "^mail\\.google\\.com/mail/" edit-server-url)
+                   (let ((markdown-string
+                          (shell-command-to-string
+                           (concat "echo '" (buffer-substring-no-properties (point-min) (point-max)) "' | multimarkdown"))))
+                     (erase-buffer)
+                     (insert markdown-string)
+                     )))))
+
+  (edit-server-start))
+
 (provide 'starter)
 ;;; starter.el ends here
