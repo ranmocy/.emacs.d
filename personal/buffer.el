@@ -24,6 +24,9 @@
 
 ;;; Code:
 
+;; ibuffer auto-mode
+(add-hook 'ibuffer-mode-hook (lambda () (ibuffer-auto-mode)))
+
 (require 'ibuffer-vc)
 (add-hook 'ibuffer-hook
           (lambda ()
