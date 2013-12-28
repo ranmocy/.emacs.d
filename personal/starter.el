@@ -24,8 +24,14 @@
 
 ;;; Code:
 
+;; Packages
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+
+;; Coding system
+(prefer-coding-system 'utf-8)
+(setq coding-system-for-read 'utf-8)
+(setq coding-system-for-write 'utf-8)
 
 (setq prelude-guru nil)
 (setq whitespace-line-column 160)       ; limit line length
