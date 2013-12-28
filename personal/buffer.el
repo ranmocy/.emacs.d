@@ -27,6 +27,31 @@
 ;; ibuffer auto-mode
 (add-hook 'ibuffer-mode-hook (lambda () (ibuffer-auto-mode)))
 
+;; Kill some buffers
+(defcustom protected-buffer-list '("*scratch*" "*Messages*")
+  "The buffers you want to protect to be closed."
+  :group 'prelude-buffer
+  :type 'list
+  :safe 'listp)
+
+(defun kill-this-buffer-unless-some ()
+  "Kill this buffer unless it in `protected-buffer-list'."
+  (interactive)
+  (if (member (buffer-name (current-buffer)) protected-buffer-list)
+      (bury-buffer)
+    (kill-buffer (current-buffer))))
+
+(defun join-region (beg end)
+  "Apply `join-line' over region from BEG to END."
+  (interactive "r")
+  (if mark-active
+      (let ((beg (region-beginning))
+            (end (copy-marker (region-end))))
+        (goto-char beg)
+        (while (< (point) end)
+          (join-line 1)))
+    (join-line 1)))
+
 (require 'ibuffer-vc)
 (add-hook 'ibuffer-hook
           (lambda ()
