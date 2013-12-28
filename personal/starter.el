@@ -101,12 +101,8 @@
     (add-hook 'edit-server-done-hook
               '(lambda ()
                  (when (string-match "^mail\\.google\\.com/mail/" edit-server-url)
-                   (let ((markdown-string
-                          (shell-command-to-string
-                           (concat "echo '" (buffer-substring-no-properties (point-min) (point-max)) "' | multimarkdown"))))
-                     (erase-buffer)
-                     (insert markdown-string)
-                     )))))
+                   (shell-command-on-region (point-min) (point-max)
+                                            "multimarkdown" (current-buffer) t)))))
 
   (edit-server-start))
 
