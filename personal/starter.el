@@ -78,9 +78,6 @@
         '(("github\\.com" . markdown-mode)
           ("maxiang\\.info" . markdown-mode)))
 
-  ;; TODO: hack the function
-  (add-hook 'edit-server-start-hook '(lambda () (select-frame-set-input-focus (window-frame (selected-window)))))
-
   (add-hook 'edit-server-done-hook
             '(lambda () (kill-ring-save (point-min) (point-max))))
 
