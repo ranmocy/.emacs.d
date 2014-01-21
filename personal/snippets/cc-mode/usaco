@@ -14,12 +14,17 @@ typedef enum { false, true } bool;
 
 int main()
 {
-    FILE *fin = fopen("`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`.in", "r");
-    FILE *fout = fopen("`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`.out", "w");
+    {
+        FILE *fin = fopen("`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`.in", "r");
+        fclose(fin);
+    }
 
     $0
 
-    fclose(fin);
-    fclose(fout);
+    {
+        FILE *fout = fopen("`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`.out", "w");
+        fclose(fout);
+    }
+
     return 0;
 }
