@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: class
+# key: class
+# binding: direct-keybinding
+# --
+/**
+ * ${1:Descript class here}
+ *
+ *
+ * Created: `(format-time-string "%a %b %d %T %Y")`
+ *
+ * @author <a href="mailto:ranmocy@gmail.com">Wanzhang Sheng</a>
+ * @version 1.0
+ */
+public class ${2:ClassName} {
+
+    public $2() {
+        $0
+    }
+
+}
