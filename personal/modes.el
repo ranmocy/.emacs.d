@@ -43,5 +43,13 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
+;; javacc
+(autoload 'javacc-mode "javacc-mode" "JavaCC mode" t)
+(add-hook 'auto-mode-alist '("\\.jj$" . javacc-mode))
+(add-hook 'auto-mode-alist '("\\.jjt$" . javacc-mode))
+(add-hook 'javacc-mode-hook (lambda ()
+                              (setq c-basic-offset 8
+                                    tab-width 8)))
+
 (provide 'modes)
 ;;; modes.el ends here

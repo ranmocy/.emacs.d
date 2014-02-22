@@ -46,7 +46,7 @@
 (indent-guide-global-mode)
 ;; (setq indent-guide-char "|")
 (set-face-attribute 'indent-guide-face nil
-                    :foreground "#CCC")
+                    :foreground "#888")
 
 ;; Indent when yank
 (defadvice yank (around html-yank-indent)
