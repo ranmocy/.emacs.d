@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: insert code
+# key: insertcode
+# --
+\lstinputlisting[language=${1:{[mips]Assembler}}]{${1:filename.s}}
+$0
